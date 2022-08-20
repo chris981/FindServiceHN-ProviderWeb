@@ -4,7 +4,6 @@ import { AuthLayoutComponent } from './shared/components/layouts/auth-layout/aut
 import { AuthGaurd } from './shared/services/auth.gaurd';
 import { BlankLayoutComponent } from './shared/components/layouts/blank-layout/blank-layout.component';
 import { AdminLayoutSidebarCompactComponent } from './shared/components/layouts/admin-layout-sidebar-compact/admin-layout-sidebar-compact.component';
-import { AdminLayoutSidebarLargeComponent } from './shared/components/layouts/admin-layout-sidebar-large/admin-layout-sidebar-large.component';
 
 const adminRoutes: Routes = [
     {
@@ -12,51 +11,15 @@ const adminRoutes: Routes = [
       loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
     },
     {
-      path: 'uikits',
-      loadChildren: () => import('./views/ui-kits/ui-kits.module').then(m => m.UiKitsModule)
-    },
-    {
-      path: 'forms',
-      loadChildren: () => import('./views/forms/forms.module').then(m => m.AppFormsModule)
-    },
-    {
-      path: 'invoice',
-      loadChildren: () => import('./views/invoice/invoice.module').then(m => m.InvoiceModule)
-    },
-    {
-      path: 'inbox',
-      loadChildren: () => import('./views/inbox/inbox.module').then(m => m.InboxModule)
-    },
-    {
-      path: 'calendar',
-      loadChildren: () => import('./views/calendar/calendar.module').then(m => m.CalendarAppModule)
-    },
-    {
-      path: 'chat',
-      loadChildren: () => import('./views/chat/chat.module').then(m => m.ChatModule)
-    },
-    {
-      path: 'contacts',
-      loadChildren: () => import('./views/contacts/contacts.module').then(m => m.ContactsModule)
-    },
-    {
-      path: 'tables',
-      loadChildren: () => import('./views/data-tables/data-tables.module').then(m => m.DataTablesModule)
-    },
-    {
-      path: 'pages',
-      loadChildren: () => import('./views/pages/pages.module').then(m => m.PagesModule)
-    },
-    {
-        path: 'icons',
-        loadChildren: () => import('./views/icons/icons.module').then(m => m.IconsModule)
+      path: 'admin',
+      loadChildren: () => import('./views/admin/admin.module').then(m => m.AdminModule)
     }
   ];
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard/v1',
+    redirectTo: 'dashboard',
     pathMatch: 'full'
   },
   {

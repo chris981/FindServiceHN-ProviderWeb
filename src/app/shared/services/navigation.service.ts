@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { AuthService } from './auth.service';
 
 export interface IMenuItem {
     id?: string;
@@ -46,7 +47,7 @@ export class NavigationService {
     };
     selectedItem: IMenuItem;
     
-    constructor() {
+    constructor(private userService: AuthService) {
     }
 
     defaultMenu: IMenuItem[] = [
@@ -174,24 +175,41 @@ export class NavigationService {
         }
     ];
 
+    findServiceMenu: IMenuItem[] = [
+        {   
+            name: 'Dashboard',
+            type: 'dropDown',
+            icon: 'i-Bar-Chart',
+            state: '/dashboard',
+        },
+        {
+            name: 'Administration',
+            type: 'dropDown',
+            icon: 'i-Administrator',
+            sub: [
+                { icon: 'i-Conference', name: 'User Mantainance', state: '/admin/userMantainance', type: 'link' }
+            ]
+        }
+    ]
 
     // sets iconMenu as default;
-    menuItems = new BehaviorSubject<IMenuItem[]>(this.defaultMenu);
+    menuItems = new BehaviorSubject<IMenuItem[]>(this.findServiceMenu);
     // navigation component has subscribed to this Observable
     menuItems$ = this.menuItems.asObservable();
 
     // You can customize this method to supply different menu for
     // different user type.
-    // publishNavigationChange(menuType: string) {
-    //   switch (userType) {
-    //     case 'admin':
-    //       this.menuItems.next(this.adminMenu);
-    //       break;
-    //     case 'user':
-    //       this.menuItems.next(this.userMenu);
-    //       break;
-    //     default:
-    //       this.menuItems.next(this.defaultMenu);
-    //   }
-    // }
+    publishNavigationChange() {
+        const userType: string = this.userService.getuser()?.role;
+        switch (userType.toLowerCase()) {
+            case 'admin':
+            this.menuItems.next(this.defaultMenu);
+            break;
+            case 'user':
+            this.menuItems.next(this.findServiceMenu);
+            break;
+            default:
+            this.menuItems.next(this.defaultMenu);
+        }
+    }
 }

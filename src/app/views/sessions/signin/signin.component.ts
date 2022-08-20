@@ -33,8 +33,8 @@ export class SigninComponent implements OnInit {
         });
 
         this.signinForm = this.fb.group({
-            email: ['test@example.com', Validators.required],
-            password: ['1234', Validators.required]
+            email: ['', Validators.required],
+            password: ['', Validators.required]
         });
     }
 
@@ -43,7 +43,7 @@ export class SigninComponent implements OnInit {
         this.loadingText = 'Sigining in...';
         this.auth.signin(this.signinForm.value?.email, this.signinForm.value?.password)
             .subscribe(res => {
-                this.router.navigateByUrl('/dashboard/v1');
+                this.router.navigateByUrl('/dashboard');
                 this.loading = false;
             }, (error) => {
                 this.loading = false;

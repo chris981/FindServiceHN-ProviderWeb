@@ -28,7 +28,7 @@ export class AuthService {
   }
 
   getuser() {
-    return of({});
+    return this.store.getItem('user');
   }
 
   signin(username: string, password: string) {
