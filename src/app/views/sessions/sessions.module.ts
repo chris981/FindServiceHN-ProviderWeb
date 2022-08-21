@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { SessionsRoutingModule } from './sessions-routing.module';
 import { SignupComponent } from './signup/signup.component';
@@ -15,7 +16,8 @@ import { SharedComponentsModule } from 'src/app/shared/components/shared-compone
     FormsModule,
     ReactiveFormsModule,
     SharedComponentsModule,
-    SessionsRoutingModule
+    SessionsRoutingModule,
+    NgbModule
   ],
   declarations: [SignupComponent, SigninComponent, ForgotComponent]
 })

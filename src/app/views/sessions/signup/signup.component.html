@@ -3,7 +3,7 @@
     <div class="col-md-6 text-center " style="background-size: cover;background-image: url(./assets/images/photo-long-3.jpg)">
       <div class="pl-3 auth-right">
         <div class="auth-logo text-center mt-4">
-          <img src="" alt="">
+          <img src="../../../../assets/images/grLogo.png" alt="">
         </div>
         <div class="flex-grow-1"></div>
         <div class="w-100 mb-4">
@@ -21,24 +21,60 @@
         
         <h1 class="mb-3 text-18">Sign Up</h1>
         <!-- <p class="mb-4 text-muted font-small">Lorem ipsum dolor sit amet.</p> -->
-        <form action="">
+        <form [formGroup]="signUpForm">
           <div class="form-group">
-            <label for="username">Your name</label>
-            <input id="username" class="form-control form-control-rounded" type="text">
+            <label for="name">Name</label>
+            <input id="name" formControlName="name" class="form-control form-control-rounded" type="text">
+            <ngb-alert *ngIf="signUpForm.controls['name']?.touched && signUpForm.controls['name']?.errors?.required"
+             type="danger" >
+              This Field is required.
+            </ngb-alert>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last name</label>
+            <input id="lastName" formControlName="lastName" class="form-control form-control-rounded" type="text">
+            <ngb-alert *ngIf="signUpForm.controls['lastName']?.touched && signUpForm.controls['lastName']?.errors?.required"
+             type="danger" >
+              This Field is required.
+            </ngb-alert>
           </div>
           <div class="form-group">
             <label for="email">Email address</label>
-            <input id="email" class="form-control form-control-rounded" type="email">
+            <input id="email" formControlName="email" class="form-control form-control-rounded" type="email">
+            <ngb-alert *ngIf="signUpForm.controls['email']?.touched && signUpForm.controls['email']?.errors?.required"
+             type="danger" >
+              This Field is required.
+            </ngb-alert>
+          </div>
+          <div class="form-group">
+            <label for="userName">User name</label>
+            <input id="userName" formControlName="userName" class="form-control form-control-rounded" type="text">
+            <ngb-alert *ngIf="signUpForm.controls['userName']?.touched && signUpForm.controls['userName']?.errors?.required"
+             type="danger" >
+              This Field is required.
+            </ngb-alert>
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input id="password" class="form-control form-control-rounded" type="password">
+            <input id="password" formControlName="password" class="form-control form-control-rounded" type="password">
+            <ngb-alert *ngIf="signUpForm.controls['password']?.touched && signUpForm.controls['password']?.errors?.required"
+             type="danger" >
+              This Field is required.
+            </ngb-alert>
           </div>
           <div class="form-group">
             <label for="repassword">Retype password</label>
-            <input id="repassword" class="form-control form-control-rounded" type="password">
+            <input id="repassword" formControlName="confirmPassword" class="form-control form-control-rounded" type="password">
+            <ngb-alert *ngIf="signUpForm.controls['confirmPassword']?.touched && signUpForm.controls['confirmPassword']?.errors?.required"
+             type="danger" >
+              This Field is required.
+            </ngb-alert>
+            <ngb-alert *ngIf="signUpForm.controls['password']?.value !== signUpForm.controls['confirmPassword']?.value"
+             type="danger" >
+              The passwords doesn't match.
+            </ngb-alert>
           </div>
-          <button class="btn btn-primary btn-block btn-rounded mt-3">Sign Up</button>
+          <button class="btn btn-primary btn-block btn-rounded mt-3" (click)="Save()">Sign Up</button>
         </form>
       </div>
     </div>

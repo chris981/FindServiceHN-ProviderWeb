@@ -5,6 +5,7 @@ import { of } from "rxjs";
 import { delay, map } from "rxjs/operators";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "src/environments/environment";
+import { UserModel } from "../models/user-model";
 
 @Injectable({
   providedIn: "root"
@@ -38,6 +39,10 @@ export class AuthService {
                 this.authenticated = true;
                 return user;
             }));
+  }
+
+  signUp(user: UserModel){
+    return this.httpClient.post<UserModel>(`${this.baseUrl}/api/User/Create`, {...user});
   }
 
   signout() {

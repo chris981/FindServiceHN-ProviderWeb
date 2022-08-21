@@ -203,10 +203,10 @@ export class NavigationService {
         const userType: string = this.userService.getuser()?.role;
         switch (userType.toLowerCase()) {
             case 'admin':
-            this.menuItems.next(this.defaultMenu);
+            this.menuItems.next(this.findServiceMenu);
             break;
             case 'user':
-            this.menuItems.next(this.findServiceMenu);
+            this.menuItems.next(this.defaultMenu);
             break;
             default:
             this.menuItems.next(this.defaultMenu);

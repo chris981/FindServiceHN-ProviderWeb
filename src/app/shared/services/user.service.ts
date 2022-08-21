@@ -19,4 +19,8 @@ export class UserService {
   DeletUser(id: number): Observable<boolean> {
     return this.http.delete<boolean>(`${this.baseUrl}/api/User/Remove/${id}`);
   }
+
+  UpdateUser(user: UserModel): Observable<UserModel> {
+    return this.http.put<UserModel>(`${this.baseUrl}/api/User/Update`, user);
+  }
 }
