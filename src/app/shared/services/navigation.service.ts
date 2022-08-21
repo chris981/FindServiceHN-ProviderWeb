@@ -187,7 +187,8 @@ export class NavigationService {
             type: 'dropDown',
             icon: 'i-Administrator',
             sub: [
-                { icon: 'i-Conference', name: 'User Mantainance', state: '/admin/userMantainance', type: 'link' }
+                { icon: 'i-Conference', name: 'User Mantainance', state: '/admin/userMantainance', type: 'link' },
+                { icon: 'i-Information', name: 'Order Status mantainance', state: '/admin/orderStatus', type: 'link'}
             ]
         }
     ]

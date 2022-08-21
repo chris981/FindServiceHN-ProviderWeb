@@ -7,11 +7,13 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { UserMantainanceComponent } from './user-mantainance/user-mantainance.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { OrderStatusMantainanceComponent } from './order-status-mantainance/order-status-mantainance.component';
 
 
 @NgModule({
   declarations: [
-    UserMantainanceComponent
+    UserMantainanceComponent,
+    OrderStatusMantainanceComponent
   ],
   imports: [
     CommonModule,
