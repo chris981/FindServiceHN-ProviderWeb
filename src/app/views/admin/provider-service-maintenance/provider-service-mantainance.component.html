@@ -1,1 +1,62 @@
-<p>provider-service-mantainance works!</p>
+<div class="">
+    <div class="breadcrumb">
+        <h1>Admin</h1>
+        <ul>
+            <li><a>Providers Service Mantainance</a></li>
+        </ul>
+    </div>
+
+    <div class="separator-breadcrumb border-top"></div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Provider Service List</h5>
+            <div>
+                <div class="row">
+                    <div class="col-1">
+                        <button type="button" class="btn btn-success btn-rounded"><i title="Add Status" class="i-Add-UserStar"></i></button>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input id="searchUsers" placeholder="Search Users" [formControl]=""
+                                class="form-control form-control-rounded" type="text">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card  o-hidden">
+                            <ngx-datatable style="height: 500px; box-shadow: none" class="material fullscreen"
+                                [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="60"
+                                [scrollbarH]="false" [scrollbarV]="true" [rows]="">
+                                <ngx-datatable-column name="idStatusOrder" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        idStatusOrder
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="idStatus" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        idStatus
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="description" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        Description
+                                    </ng-template>
+                                </ngx-datatable-column>
+
+                                <ngx-datatable-column name="idStatusOrder" [minWidth]="60" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        Options
+                                    </ng-template>
+                                    <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+                                        <button type="button" class="btn btn-danger btn-rounded m-1"><i title="Remove User" class="i-Remove-User"></i></button>
+                                        <button type="button" class="btn btn-warning btn-rounded m-1"><i title="Update User" class="i-Checked-User"></i></button>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                            </ngx-datatable>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

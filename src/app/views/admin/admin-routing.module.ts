@@ -1,8 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CategoriesMantainanceComponent } from './categories-maintenance/categories-mantainance.component';
+import { CountriesMaintenanceComponent } from './countries-maintenance/countries-maintenance.component';
+import { CustomersAddressesMaintenanceComponent } from './customers-addresses-maintenance/customers-addresses-maintenance.component';
+import { CustomersMaintenanceComponent } from './customers-maintenance/customers-maintenance.component';
 import { DayhoursMantainanceComponent } from './dayhours-maintenance/dayhours-mantainance.component';
+import { DepartmentsMaintenanceComponent } from './departments-maintenance/departments-maintenance.component';
+import { MunicipalitiesMaintenanceComponent } from './municipalities-maintenance/municipalities-maintenance.component';
 import { OrderStatusMantainanceComponent } from './order-status-maintenance/order-status-mantainance.component';
+import { OrdersDetailComponent } from './orders-detail-maintenance/orders-detail.component';
+import { OrdersHeaderComponent } from './orders-header-maintenance/orders-header.component';
+import { OrdersSatisfactionComponent } from './orders-satisfaction-maintenance/orders-satisfaction.component';
 import { ProductMantainanceComponent } from './product-maintenance/product-mantainance.component';
 import { ProviderMantainanceComponent } from './provider-maintenance/provider-mantainance.component';
 import { ProviderPlansJobsMantainanceComponent } from './provider-plans-jobs-maintenance/provider-plans-jobs-mantainance.component';
@@ -12,6 +20,7 @@ import { ProvidersEvalComponent } from './providers-eval-maintenance/providers-e
 import { QuotesDetailComponent } from './quotes-detail-maintenance/quotes-detail.component';
 import { QuotesHeaderComponent } from './quotes-header-maintenance/quotes-header.component';
 import { ServiceStatusMantainanceComponent } from './service-status-maintenance/service-status-mantainance.component';
+import { StatusOrdersComponent } from './status-orders-maintenance/status-orders.component';
 import { SubcategoriesMantainanceComponent } from './subcategories-maintenance/subcategories-mantainance.component';
 import { UserMantainanceComponent } from './user-maintenance/user-mantainance.component';
 
@@ -71,6 +80,42 @@ const routes: Routes = [
   {
     path: 'dayhours',
     component: DayhoursMantainanceComponent
+  },
+  {
+    path: 'order-header',
+    component: OrdersHeaderComponent
+  },
+  {
+    path: 'order-detail',
+    component: OrdersDetailComponent
+  },
+  {
+    path: 'order-satisfaction',
+    component: OrdersSatisfactionComponent
+  },
+  {
+    path: 'status-order',
+    component: StatusOrdersComponent
+  },
+  {
+    path: 'customers',
+    component: CustomersMaintenanceComponent
+  },
+  {
+    path: 'customers-addresses',
+    component: CustomersAddressesMaintenanceComponent
+  },
+  {
+    path: 'countries',
+    component: CountriesMaintenanceComponent
+  },
+  {
+    path: 'departments',
+    component: DepartmentsMaintenanceComponent
+  },
+  {
+    path: 'municipalities',
+    component: MunicipalitiesMaintenanceComponent
   }
     
 

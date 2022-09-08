@@ -19,6 +19,15 @@ import { CategoriesMantainanceComponent } from './categories-maintenance/categor
 import { SubcategoriesMantainanceComponent } from './subcategories-maintenance/subcategories-mantainance.component';
 import { ProductMantainanceComponent } from './product-maintenance/product-mantainance.component';
 import { OrderStatusMantainanceComponent } from './order-status-maintenance/order-status-mantainance.component';
+import { OrdersHeaderComponent } from './orders-header-maintenance/orders-header.component';
+import { OrdersDetailComponent } from './orders-detail-maintenance/orders-detail.component';
+import { OrdersSatisfactionComponent } from './orders-satisfaction-maintenance/orders-satisfaction.component';
+import { StatusOrdersComponent } from './status-orders-maintenance/status-orders.component';
+import { CustomersMaintenanceComponent } from './customers-maintenance/customers-maintenance.component';
+import { CustomersAddressesMaintenanceComponent } from './customers-addresses-maintenance/customers-addresses-maintenance.component';
+import { CountriesMaintenanceComponent } from './countries-maintenance/countries-maintenance.component';
+import { DepartmentsMaintenanceComponent } from './departments-maintenance/departments-maintenance.component';
+import { MunicipalitiesMaintenanceComponent } from './municipalities-maintenance/municipalities-maintenance.component';
 
 
 
@@ -37,7 +46,16 @@ import { OrderStatusMantainanceComponent } from './order-status-maintenance/orde
     CategoriesMantainanceComponent,
     SubcategoriesMantainanceComponent,
     ProductMantainanceComponent,
-    OrderStatusMantainanceComponent
+    OrderStatusMantainanceComponent,
+    OrdersHeaderComponent,
+    OrdersDetailComponent,
+    OrdersSatisfactionComponent,
+    StatusOrdersComponent,
+    CustomersMaintenanceComponent,
+    CustomersAddressesMaintenanceComponent,
+    CountriesMaintenanceComponent,
+    DepartmentsMaintenanceComponent,
+    MunicipalitiesMaintenanceComponent
   ],
   imports: [
     CommonModule,

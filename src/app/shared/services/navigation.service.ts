@@ -200,7 +200,16 @@ export class NavigationService {
                 { icon: 'i-Library', name: 'Quotes Detail Maintenance', state: '/admin/quotes-detail', type: 'link'},
                 { icon: 'i-Bag-Items', name: 'Categories Maintenance', state: '/admin/categories', type: 'link'},
                 { icon: 'i-Bag-Items', name: 'SubCategories Maintenance', state: '/admin/subcategories', type: 'link'},
-                { icon: 'i-Stopwatch', name: 'Day Hours Maintenance', state: '/admin/dayhours', type: 'link'}
+                { icon: 'i-Stopwatch', name: 'Day Hours Maintenance', state: '/admin/dayhours', type: 'link'},
+                { icon: 'i-One-Window', name: 'Order Headers Maintenance', state: '/admin/order-header', type: 'link'},
+                { icon: 'i-One-Window', name: 'Order Detail Maintenance', state: '/admin/order-detail', type: 'link'},
+                { icon: 'i-One-Window', name: 'Order Satisfaction Maintenance', state: '/admin/order-satisfaction', type: 'link'},
+                { icon: 'i-Loading', name: 'Status Order Maintenance', state: '/admin/status-order', type: 'link'},
+                { icon: 'i-Business-Mens', name: 'Customers Maintenance', state: '/admin/customers', type: 'link'},
+                { icon: 'i-Business-Mens', name: 'Customers Addresses Maintenance', state: '/admin/customers-addresses', type: 'link'},
+                { icon: 'i-Map2', name: 'Countries Maintenance', state: '/admin/countries', type: 'link'},
+                { icon: 'i-Map2', name: 'Deparments Maintenance', state: '/admin/departments', type: 'link'},
+                { icon: 'i-Map2', name: 'Municipalities Maintenance', state: '/admin/municipalities', type: 'link'}
             ]
         }
     ]
