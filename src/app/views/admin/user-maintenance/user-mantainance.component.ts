@@ -29,7 +29,7 @@ export class UserMantainanceComponent implements OnInit {
     this.searchControl.valueChanges
     .pipe(debounceTime(200))
     .subscribe(value => {
-      this.filerData(value);
+      this.filterData(value);
     });
   }
 
@@ -42,7 +42,7 @@ export class UserMantainanceComponent implements OnInit {
     });
   }
 
-  filerData(val) {
+  filterData(val) {
     if (val) {
       val = val.toLowerCase();
     } else {

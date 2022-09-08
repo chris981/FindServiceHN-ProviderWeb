@@ -187,8 +187,20 @@ export class NavigationService {
             type: 'dropDown',
             icon: 'i-Administrator',
             sub: [
-                { icon: 'i-Conference', name: 'User Mantainance', state: '/admin/userMantainance', type: 'link' },
-                { icon: 'i-Information', name: 'Order Status mantainance', state: '/admin/orderStatus', type: 'link'}
+                { icon: 'i-Conference', name: 'User Maintenance', state: '/admin/user-maintenance', type: 'link' },
+                { icon: 'i-Information', name: 'Order Status Maintenance', state: '/admin/order-status', type: 'link'},
+                { icon: 'i-Full-Basket', name: 'Product Maintenance', state: '/admin/products', type: 'link'},
+                { icon: 'i-Management', name: 'Providers Maintenance', state: '/admin/providers', type: 'link'},
+                { icon: 'i-Management', name: 'Providers Service Maintenance', state: '/admin/providers-service', type: 'link'},
+                { icon: 'i-Management', name: 'Providers Plan Jobs Maintenance', state: '/admin/providers-plan-jobs', type: 'link'},
+                { icon: 'i-Management', name: 'Providers Eval Maintenance', state: '/admin/providers-eval', type: 'link'},
+                { icon: 'i-Management', name: 'Providers Attention Maintenance', state: '/admin/providers-attention', type: 'link'},
+                { icon: 'i-Loading', name: 'Service Status Maintenance', state: '/admin/service-status', type: 'link'},
+                { icon: 'i-Library', name: 'Quotes Header Maintenance', state: '/admin/quotes-header', type: 'link'},
+                { icon: 'i-Library', name: 'Quotes Detail Maintenance', state: '/admin/quotes-detail', type: 'link'},
+                { icon: 'i-Bag-Items', name: 'Categories Maintenance', state: '/admin/categories', type: 'link'},
+                { icon: 'i-Bag-Items', name: 'SubCategories Maintenance', state: '/admin/subcategories', type: 'link'},
+                { icon: 'i-Stopwatch', name: 'Day Hours Maintenance', state: '/admin/dayhours', type: 'link'}
             ]
         }
     ]

@@ -10,8 +10,8 @@ import { debounceTime } from 'rxjs/operators';
   styleUrls: ['./order-status-mantainance.component.scss']
 })
 export class OrderStatusMantainanceComponent implements OnInit {
-  orderStatuses: Array<OrderStatus>;
-  orderStatusesFiltered: Array<OrderStatus>;
+  orderStatus: Array<OrderStatus>;
+  orderStatusFiltered: Array<OrderStatus>;
   searchControl: UntypedFormControl = new UntypedFormControl();
   constructor(private orderStatusService: OrderStatusService) { }
 
@@ -20,23 +20,23 @@ export class OrderStatusMantainanceComponent implements OnInit {
     this.searchControl.valueChanges
     .pipe(debounceTime(200))
     .subscribe(value => {
-      this.filerData(value);
+      this.filterData(value);
     });
   }
 
-  filerData(val) {
+  filterData(val) {
     if (val) {
       val = val.toLowerCase();
     } else {
-      return this.orderStatusesFiltered = [...this.orderStatuses];
+      return this.orderStatusFiltered = [...this.orderStatus];
     }
 
-    const columns = Object.keys(this.orderStatuses[0]);
+    const columns = Object.keys(this.orderStatus[0]);
     if (!columns.length) {
       return;
     }
 
-    const rows = this.orderStatuses.filter(function(d) {
+    const rows = this.orderStatus.filter(function(d) {
       for (let i = 0; i <= columns.length; i++) {
         const column = columns[i];
         if (d[column] && d[column].toString().toLowerCase().indexOf(val) > -1) {
@@ -44,14 +44,14 @@ export class OrderStatusMantainanceComponent implements OnInit {
         }
       }
     });
-    this.orderStatusesFiltered = rows;
+    this.orderStatusFiltered = rows;
   }
 
   GetAllOrderStatuses(){
-    this.orderStatusService.GetAll()
+    this.orderStatusService.getOrderStatus()
       .subscribe({next: (resp) => {
-        this.orderStatuses = [...resp];
-        this.orderStatusesFiltered = resp;
+        this.orderStatus = [...resp];
+        this.orderStatusFiltered = resp;
       }});
   }
 

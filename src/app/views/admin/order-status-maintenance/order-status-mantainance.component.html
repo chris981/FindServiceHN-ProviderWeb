@@ -26,20 +26,24 @@
                         <div class="card  o-hidden">
                             <ngx-datatable style="height: 500px; box-shadow: none" class="material fullscreen"
                                 [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="60"
-                                [scrollbarH]="false" [scrollbarV]="true" [rows]="orderStatusesFiltered">
+                                [scrollbarH]="false" [scrollbarV]="true" [rows]="orderStatusFiltered">
                                 <ngx-datatable-column name="idStatusOrder" [minWidth]="40" [maxWidth]="200">
                                     <ng-template ngx-datatable-header-template>
-                                        Id
+                                        idStatusOrder
                                     </ng-template>
                                 </ngx-datatable-column>
-
+                                <ngx-datatable-column name="idStatus" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        idStatus
+                                    </ng-template>
+                                </ngx-datatable-column>
                                 <ngx-datatable-column name="description" [minWidth]="40" [maxWidth]="200">
                                     <ng-template ngx-datatable-header-template>
                                         Description
                                     </ng-template>
                                 </ngx-datatable-column>
 
-                                <ngx-datatable-column name="id" [minWidth]="60" [maxWidth]="200">
+                                <ngx-datatable-column name="idStatusOrder" [minWidth]="60" [maxWidth]="200">
                                     <ng-template ngx-datatable-header-template>
                                         Options
                                     </ng-template>

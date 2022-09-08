@@ -13,7 +13,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   GetAllUsers(): Observable<Array<UserModel>> {
-    return this.http.get<Array<UserModel>>(`${this.baseUrl}/api/User/GetAll`);
+    return this.http.get<Array<UserModel>>(`${this.baseUrl}/api/User/GetAllAsync`);
   }
 
   DeletUser(id: number): Observable<boolean> {

@@ -10,9 +10,11 @@ import { OrderStatus } from '../models/order-status-model';
 export class OrderStatusService {
 
   baseUrl = environment.baseUrl;
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+    ) { }
 
-  GetAll(): Observable<Array<OrderStatus>> {
-    return this.http.get<OrderStatus[]>(`${this.baseUrl}/api/OrderStatus/GetAll`);
+  getOrderStatus(): Observable<Array<OrderStatus>> {
+    return this.http.get<OrderStatus[]>(`${this.baseUrl}/api/OrderStatus/GetOrderStatus`);
   }
 }
