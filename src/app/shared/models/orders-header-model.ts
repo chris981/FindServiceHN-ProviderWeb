@@ -1,15 +1,15 @@
 export interface OrdersHeaderModel {
-    IdOrder: number;
-    IdCustomer: number;
-    IdProvider: number;
-    IdClienteAddress: number;
-    Description: string;
-    IdCategory: number;
-    IdSubcategory: number;
-    CreationDate: Date;
-    Executiondate: Date;
-    ClosingDate: Date;
-    IdStatus: number;
-    SatisfactionLever: string;
-    CustomerObservation: string; 
+    idOrder: number;
+    idCustomer: number;
+    idProvider: number;
+    idClienteAddress: number;
+    description: string;
+    idCategory: number;
+    idSubcategory: number;
+    creationDate: Date;
+    executiondate: Date;
+    closingDate: Date;
+    idStatus: number;
+    satisfactionLever: string;
+    customerObservation: string; 
 }

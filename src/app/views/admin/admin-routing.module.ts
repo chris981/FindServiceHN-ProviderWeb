@@ -20,7 +20,6 @@ import { ProvidersEvalComponent } from './providers-eval-maintenance/providers-e
 import { QuotesDetailComponent } from './quotes-detail-maintenance/quotes-detail.component';
 import { QuotesHeaderComponent } from './quotes-header-maintenance/quotes-header.component';
 import { ServiceStatusMantainanceComponent } from './service-status-maintenance/service-status-mantainance.component';
-import { StatusOrdersComponent } from './status-orders-maintenance/status-orders.component';
 import { SubcategoriesMantainanceComponent } from './subcategories-maintenance/subcategories-mantainance.component';
 import { UserMantainanceComponent } from './user-maintenance/user-mantainance.component';
 
@@ -92,10 +91,6 @@ const routes: Routes = [
   {
     path: 'order-satisfaction',
     component: OrdersSatisfactionComponent
-  },
-  {
-    path: 'status-order',
-    component: StatusOrdersComponent
   },
   {
     path: 'customers',

@@ -1,8 +1,8 @@
 export interface CountriesModel {
-    IdCountry: number;
-    Name: string;
-    CountryCode: number;
-    IdStatus: number;
-    IdUserCreation: number;
-    CreationDate: Date;
+    idCountry: number;
+    name: string;
+    countryCode: number;
+    idStatus: number;
+    idUserCreation: number;
+    creationDate: Date;
 }

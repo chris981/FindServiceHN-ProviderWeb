@@ -1,10 +1,10 @@
 export interface QuotesDetail {
-    IdQuoteDetail: number;
-    IdCustomer: number;
-    IdProvider: number;
-    Line: number;
-    IdProduct: number;
-    Price: number;
-    Amount: number;
-    IdStatus: number;
+    idQuoteDetail: number;
+    idCustomer: number;
+    idProvider: number;
+    line: number;
+    idProduct: number;
+    price: number;
+    amount: number;
+    idStatus: number;
 }

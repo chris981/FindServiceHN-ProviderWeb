@@ -1,7 +1,7 @@
 export interface ProviderAttentionModel {
-    IdProviderAttention: number;
-    Description: string;
-    TypeAttention: string;
-    IdStatus: number;
-    CreationDate: Date;
+    idProviderAttention: number;
+    description: string;
+    typeAttention: string;
+    idStatus: number;
+    creationDate: Date;
 }

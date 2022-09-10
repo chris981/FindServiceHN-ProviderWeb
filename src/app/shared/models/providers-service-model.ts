@@ -1,12 +1,12 @@
 export interface ProvidersServiceModel {
-    IdProviderService: number;
-    IdProduct: number;
-    IdServiceType: number;
-    TypeService: string;
-    Description: string;
-    Currency: string;
-    Price: number;
-    Shipping: string;
-    ProductImage: string;
-    IdStatus: number;
+    idProviderService: number;
+    idProduct: number;
+    idServiceType: number;
+    typeService: string;
+    description: string;
+    currency: string;
+    price: number;
+    shipping: string;
+    productImage: string;
+    idStatus: number;
 }

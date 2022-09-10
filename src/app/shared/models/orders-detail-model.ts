@@ -1,10 +1,10 @@
 export interface OrdersDetailModel {
-    IdOrder: number;
-    IdCustomer: number;
-    IdProvider: number;
-    Line: string;
-    IdProduct: number;
-    Price: number;
-    Amount: number;
-    IdStatus: number;
+    idOrder: number;
+    idCustomer: number;
+    idProvider: number;
+    line: string;
+    idProduct: number;
+    price: number;
+    amount: number;
+    idStatus: number;
 }

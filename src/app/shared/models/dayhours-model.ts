@@ -1,4 +1,4 @@
 export interface DayhoursModel {
-    Id: number;
+    id: number;
     hour: Date;
 }

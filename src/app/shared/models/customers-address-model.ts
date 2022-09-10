@@ -1,10 +1,10 @@
 export interface CustomersAddressModel {
-    IdCustomerAddress: number;
-    IdCustomer: number;
-    IdCountry: number;
-    IdDepartment: number;
-    IdMunicipality: number;
-    Direction: string;
-    Observations: string;
-    IdStatus: number;
+    idCustomerAddress: number;
+    idCustomer: number;
+    idCountry: number;
+    idDepartment: number;
+    idMunicipality: number;
+    direction: string;
+    observations: string;
+    idStatus: number;
 }

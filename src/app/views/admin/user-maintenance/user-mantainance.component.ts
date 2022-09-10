@@ -20,11 +20,11 @@ export class UserMantainanceComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private modalService: NgbModal,private _formBuilder: FormBuilder) { 
+    private modalService: NgbModal,
+    private _formBuilder: FormBuilder) { 
     }
 
   ngOnInit(): void {
-    
     this.updateUsers();
     this.searchControl.valueChanges
     .pipe(debounceTime(200))

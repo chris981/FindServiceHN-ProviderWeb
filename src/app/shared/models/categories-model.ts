@@ -1,8 +1,8 @@
 export interface CategoriesModel {
-    IdCategory: number,
-    Description: string,
-    Creationdate: Date,
-    IdUserCreation: number;
-    IdStatus: number;
-    Image: string;
+    idCategory: number,
+    description: string,
+    creationdate: Date,
+    idUserCreation: number;
+    idStatus: number;
+    image: string;
 }

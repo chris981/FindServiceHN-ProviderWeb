@@ -1,13 +1,13 @@
 export interface ProviderEvalModel {
-  IdEval: number;
-  Email: string;
-  Company: string;
-  Name: string;
-  LastName: string;
-  Country: string;
-  Department: string;
-  Phone: number;
-  IdCategory: number;
-  Observations: string;
-  IdStatus: number;
+  idEval: number;
+  email: string;
+  company: string;
+  name: string;
+  lastName: string;
+  country: string;
+  department: string;
+  phone: number;
+  idCategory: number;
+  observations: string;
+  idStatus: number;
 }

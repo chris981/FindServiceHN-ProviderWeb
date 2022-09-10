@@ -1,16 +1,16 @@
 export interface QuotesHeaderModel {
-    IdQuoteHeader: number;
-    IdQuoteDetail: number;
-    IdCustomer: number;
-    IdProvder: number;
-    IdClienteAddress: number;
-    Description: string;
-    IdCategory: number;
-    IdSubCategory: number;
-    CreationDate: Date;
-    AssignmentDate: Date;
-    IdStatus: number;
-    CustomerObservation: string;
-    ProviderObervation: string;
-    IdStatusCreationdate: number;
+    idQuoteHeader: number;
+    idQuoteDetail: number;
+    idCustomer: number;
+    idProvder: number;
+    idClienteAddress: number;
+    description: string;
+    idCategory: number;
+    idSubCategory: number;
+    creationDate: Date;
+    assignmentDate: Date;
+    idStatus: number;
+    customerObservation: string;
+    providerObervation: string;
+    idStatusCreationdate: number;
 }
