@@ -1,5 +1,5 @@
 export interface ServiceStatusModel {
-    idServiceStatus: number;
+    idServicesStatus: number;
     idStatus: number;
     description: string;
 }

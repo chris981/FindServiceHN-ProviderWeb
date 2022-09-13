@@ -18,7 +18,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <input id="searchUsers" placeholder="Search Users" [formControl]=""
+                            <input id="searchUsers" placeholder="Search Users" [formControl]="searchControl"
                                 class="form-control form-control-rounded" type="text">
                         </div>
                     </div>
@@ -26,10 +26,61 @@
                         <div class="card  o-hidden">
                             <ngx-datatable style="height: 500px; box-shadow: none" class="material fullscreen"
                                 [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="60"
-                                [scrollbarH]="false" [scrollbarV]="true" [rows]="">
-                                <ngx-datatable-column name="idStatusOrder" [minWidth]="40" [maxWidth]="200">
+                                [scrollbarH]="false" [scrollbarV]="true" [rows]="quotesHeaderFiltered">
+                                <ngx-datatable-column name="idQuoteHeader" [minWidth]="40" [maxWidth]="200">
                                     <ng-template ngx-datatable-header-template>
-                                        idStatusOrder
+                                        idQuoteHeader
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="idQuoteDetail" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        idQuoteDetail
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="idCustomer" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        idCustomer
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                
+                                <ngx-datatable-column name="idProvder" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        idProvder
+                                    </ng-template>
+                                </ngx-datatable-column>
+
+                                <ngx-datatable-column name="idClienteAddress" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        idClienteAddress
+                                    </ng-template>
+                                </ngx-datatable-column>
+
+                                <ngx-datatable-column name="description" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        description
+                                    </ng-template>
+                                </ngx-datatable-column>
+
+                                <ngx-datatable-column name="idCategory" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        idCategory
+                                    </ng-template>
+                                </ngx-datatable-column>
+
+                                <ngx-datatable-column name="idSubCategory" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        idSubCategory
+                                    </ng-template>
+                                </ngx-datatable-column>
+
+                                <ngx-datatable-column name="creationDate" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        creationDate
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="assignmentDate" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        assignmentDate
                                     </ng-template>
                                 </ngx-datatable-column>
                                 <ngx-datatable-column name="idStatus" [minWidth]="40" [maxWidth]="200">
@@ -37,19 +88,30 @@
                                         idStatus
                                     </ng-template>
                                 </ngx-datatable-column>
-                                <ngx-datatable-column name="description" [minWidth]="40" [maxWidth]="200">
+                                <ngx-datatable-column name="customerObservation" [minWidth]="40" [maxWidth]="200">
                                     <ng-template ngx-datatable-header-template>
-                                        Description
+                                        customerObservation
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="providerObervation" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        providerObervation
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="idStatusCreationdate" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        idStatusCreationdate
                                     </ng-template>
                                 </ngx-datatable-column>
 
-                                <ngx-datatable-column name="idStatusOrder" [minWidth]="60" [maxWidth]="200">
+
+                                <ngx-datatable-column name="idQuoteHeader" [minWidth]="60" [maxWidth]="200">
                                     <ng-template ngx-datatable-header-template>
                                         Options
                                     </ng-template>
                                     <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
-                                        <button type="button" class="btn btn-danger btn-rounded m-1"><i title="Remove User" class="i-Remove-User"></i></button>
-                                        <button type="button" class="btn btn-warning btn-rounded m-1"><i title="Update User" class="i-Checked-User"></i></button>
+                                        <button (click)="DeleteQuotesHeader(modalConfirm, value)" type="button" class="btn btn-danger btn-rounded m-1"><i title="Remove User" class="i-Remove-User"></i></button>
+                                        <button (click)="EditQuotesHeader(EditModal, value)" type="button" class="btn btn-warning btn-rounded m-1"><i title="Update User" class="i-Checked-User"></i></button>
                                     </ng-template>
                                 </ngx-datatable-column>
                             </ngx-datatable>
@@ -60,3 +122,92 @@
         </div>
     </div>
 </div>
+
+
+<ng-template #modalConfirm let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-title">Quotes Header deletion</h4>
+      <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p><strong>Are you sure you want to delete <span class="text-primary">{{selectedQuotesHeader.idQuoteHeader}}</span> ?</strong></p>
+      <p>All information associated to this user will be permanently deleted.
+      <span class="text-danger">This operation can not be undone.</span>
+      </p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary btn-rounded" (click)="modal.dismiss(false)">Cancel</button>
+      <button type="button" ngbAutofocus class="btn btn-danger btn-rounded" (click)="modal.close(true)">Ok</button>
+    </div>
+</ng-template>
+
+<ng-template #EditModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-title">Update Quotes Header</h4>
+      <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="editQuotesHeaderForm">
+        <div class="form-group">
+            <label for="idQuoteDetail">idQuoteDetail</label>
+            <input id="idQuoteDetail" class="form-control form-control-rounded" formControlName="idQuoteDetail" type="text">
+        </div>
+        <div class="form-group">
+            <label for="idCustomer">idCustomer</label>
+            <input id="idCustomer" class="form-control form-control-rounded" formControlName="idCustomer" type="text">
+        </div>
+        <div class="form-group">
+            <label for="idProvider">idProvider</label>
+            <input id="idProvider" class="form-control form-control-rounded" formControlName="idProvider" type="text">
+        </div>
+        <div class="form-group">
+            <label for="idClientAddres">idClientAddres</label>
+            <input id="idClientAddres" class="form-control form-control-rounded" formControlName="idClientAddres" type="text">
+        </div>
+        <div class="form-group">
+            <label for="description">description</label>
+            <input id="description" class="form-control form-control-rounded" formControlName="description" type="text">
+        </div>
+        <div class="form-group">
+            <label for="idCategory">idCategory</label>
+            <input id="idCategory" class="form-control form-control-rounded" formControlName="idCategory" type="text">
+        </div>
+        <div class="form-group">
+            <label for="idSubcategory">idSubcategory</label>
+            <input id="idSubcategory" class="form-control form-control-rounded" formControlName="idSubcategory" type="text">
+        </div>
+        <div class="form-group">
+            <label for="creationDate">creationDate</label>
+            <input id="creationDate" class="form-control form-control-rounded" formControlName="creationDate" type="text">
+        </div>
+        <div class="form-group">
+            <label for="assigmentDate">assigmentDate</label>
+            <input id="assigmentDate" class="form-control form-control-rounded" formControlName="assigmentDate" type="text">
+        </div>
+        <div class="form-group">
+            <label for="idStatus">idStatus</label>
+            <input id="idStatus" class="form-control form-control-rounded" formControlName="idStatus" type="text">
+        </div>
+        <div class="form-group">
+            <label for="customerObservation">customerObservation</label>
+            <input id="customerObservation" class="form-control form-control-rounded" formControlName="customerObservation" type="text">
+        </div>
+        <div class="form-group">
+            <label for="providerObservation">providerObservation</label>
+            <input id="providerObservation" class="form-control form-control-rounded" formControlName="providerObservation" type="text">
+        </div>
+        <div class="form-group">
+            <label for="idStatusCreationDate">idStatusCreationDate</label>
+            <input id="idStatusCreationDate" class="form-control form-control-rounded" formControlName="idStatusCreationDate" type="text">
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary btn-rounded" (click)="modal.dismiss(false)">Cancel</button>
+      <button type="button" ngbAutofocus class="btn btn-primary btn-rounded" (click)="modal.close(true)">Save</button>
+    </div>
+</ng-template>
