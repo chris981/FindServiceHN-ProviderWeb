@@ -8,9 +8,9 @@ import { DayhoursMantainanceComponent } from './dayhours-maintenance/dayhours-ma
 import { DepartmentsMaintenanceComponent } from './departments-maintenance/departments-maintenance.component';
 import { MunicipalitiesMaintenanceComponent } from './municipalities-maintenance/municipalities-maintenance.component';
 import { OrderStatusMantainanceComponent } from './order-status-maintenance/order-status-mantainance.component';
-import { OrdersDetailComponent } from './orders-detail-maintenance/orders-detail.component';
-import { OrdersHeaderComponent } from './orders-header-maintenance/orders-header.component';
-import { OrdersSatisfactionComponent } from './orders-satisfaction-maintenance/orders-satisfaction.component';
+import { OrderDetailMantainanceComponent } from './orders-detail-maintenance/orders-detail-mantainance.component';
+import { OrderHeaderMantainanceComponent } from './orders-header-maintenance/orders-header-mantainance.component';
+import { OrderSatisfactionMantainanceComponent } from './orders-satisfaction-maintenance/orders-satisfaction-mantainance.component';
 import { ProductMantainanceComponent } from './product-maintenance/product-mantainance.component';
 import { ProviderMantainanceComponent } from './provider-maintenance/provider-mantainance.component';
 import { ProviderPlansJobsMantainanceComponent } from './provider-plans-jobs-maintenance/provider-plans-jobs-mantainance.component';
@@ -82,15 +82,15 @@ const routes: Routes = [
   },
   {
     path: 'order-header',
-    component: OrdersHeaderComponent
+    component: OrderHeaderMantainanceComponent
   },
   {
     path: 'order-detail',
-    component: OrdersDetailComponent
+    component: OrderDetailMantainanceComponent
   },
   {
     path: 'order-satisfaction',
-    component: OrdersSatisfactionComponent
+    component: OrderSatisfactionMantainanceComponent
   },
   {
     path: 'customers',
