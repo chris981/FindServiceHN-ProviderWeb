@@ -66,7 +66,7 @@ export class OrderSatisfactionMantainanceComponent implements OnInit {
   }
 
   DeleteOrderSatisfaction(content, SatisfactionId: number){
-    this.selectedSatisfaction = this.orderSatisfaction.find(s => s.id == SatisfactionId);
+    this.selectedSatisfaction = this.orderSatisfaction.find(s => s.idSatisfaction == SatisfactionId);
     this.modalService.open(content, 
       { 
         ariaLabelledBy: 'modal-basic-title',
@@ -83,7 +83,7 @@ export class OrderSatisfactionMantainanceComponent implements OnInit {
   }
 
   EditOrderSatisfaction(content, SatisfactionId: number){
-    this.selectedSatisfaction = this.orderSatisfaction.find(s => s.id == SatisfactionId);
+    this.selectedSatisfaction = this.orderSatisfaction.find(s => s.idSatisfaction == SatisfactionId);
     this.editSatisfactionForm = this._formBuilder.group({
       valorization: [this.selectedSatisfaction.valorization],
       description: [this.selectedSatisfaction.description]

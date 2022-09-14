@@ -1,0 +1,107 @@
+<div class="">
+    <div class="breadcrumb">
+        <h1>Admin</h1>
+        <ul>
+            <li><a>User Mantainance</a></li>
+        </ul>
+    </div>
+
+    <div class="separator-breadcrumb border-top"></div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">User List</h5>
+            <div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input id="searchUsers" placeholder="Search Users" [formControl]="searchControl"
+                                class="form-control form-control-rounded" type="text">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card  o-hidden">
+                            <ngx-datatable style="height: 500px; box-shadow: none" class="material fullscreen"
+                                [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="60"
+                                [scrollbarH]="false" [scrollbarV]="true" [rows]="usersFiltered">
+                                <ngx-datatable-column name="userName" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        UserName
+                                    </ng-template>
+                                </ngx-datatable-column>
+
+                                <ngx-datatable-column name="email" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        Email
+                                    </ng-template>
+                                </ngx-datatable-column>
+
+                                <ngx-datatable-column name="role" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        Role
+                                    </ng-template>
+                                </ngx-datatable-column>
+
+                                <ngx-datatable-column name="id" [minWidth]="60" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        Options
+                                    </ng-template>
+                                    <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+                                        <button (click)="DeleteUser(modalConfirm, value)" type="button" class="btn btn-danger btn-rounded m-1"><i title="Remove User" class="i-Remove-User"></i></button>
+                                        <button (click)="EditUser(EditModal, value)" type="button" class="btn btn-warning btn-rounded m-1"><i title="Update User" class="i-Checked-User"></i></button>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                            </ngx-datatable>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #modalConfirm let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-title">User deletion</h4>
+      <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p><strong>Are you sure you want to delete <span class="text-primary">{{selectedUser.userName}}</span> ?</strong></p>
+      <p>All information associated to this user will be permanently deleted.
+      <span class="text-danger">This operation can not be undone.</span>
+      </p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary btn-rounded" (click)="modal.dismiss(false)">Cancel</button>
+      <button type="button" ngbAutofocus class="btn btn-danger btn-rounded" (click)="modal.close(true)">Ok</button>
+    </div>
+</ng-template>
+
+<ng-template #EditModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-title">Update User</h4>
+      <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="editUserForm">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input id="name" class="form-control form-control-rounded" formControlName="userName" type="text">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" class="form-control form-control-rounded" formControlName="email" type="text">
+        </div>
+
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary btn-rounded" (click)="modal.dismiss(false)">Cancel</button>
+      <button type="button" ngbAutofocus class="btn btn-primary btn-rounded" (click)="modal.close(true)">Save</button>
+    </div>
+</ng-template>

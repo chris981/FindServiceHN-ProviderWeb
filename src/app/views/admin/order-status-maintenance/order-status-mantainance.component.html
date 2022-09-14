@@ -10,7 +10,7 @@
 
     <div class="card mb-4">
         <div class="card-body">
-            <h5 class="card-title">Category List</h5>
+            <h5 class="card-title">Order Status List</h5>
             <div>
                 <div class="row">
                     <div class="col-1">
@@ -27,9 +27,9 @@
                             <ngx-datatable style="height: 500px; box-shadow: none" class="material fullscreen"
                                 [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="60"
                                 [scrollbarH]="false" [scrollbarV]="true" [rows]="orderStatusFiltered">
-                                <ngx-datatable-column name="idOrder" [minWidth]="40" [maxWidth]="200">
+                                <ngx-datatable-column name="idStatusOrder" [minWidth]="40" [maxWidth]="200">
                                     <ng-template ngx-datatable-header-template>
-                                        idOrder
+                                        ID
                                     </ng-template>
                                 </ngx-datatable-column>
                                 <ngx-datatable-column name="idStatus" [minWidth]="40" [maxWidth]="200">
@@ -42,7 +42,7 @@
                                         Description
                                     </ng-template>
                                 </ngx-datatable-column>
-                                <ngx-datatable-column name="idOrder" [minWidth]="60" [maxWidth]="200">
+                                <ngx-datatable-column name="idStatusOrder" [minWidth]="60" [maxWidth]="200">
                                     <ng-template ngx-datatable-header-template>
                                         Options
                                     </ng-template>
@@ -62,13 +62,13 @@
 
 <ng-template #modalConfirm let-modal>
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-title">Category deletion</h4>
+      <h4 class="modal-title" id="modal-title">Order Status Deletion</h4>
       <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
-      <p><strong>Are you sure you want to delete <span class="text-primary">{{selectedCategory.idCategory}}</span> ?</strong></p>
+      <p><strong>Are you sure you want to delete <span class="text-primary">{{selectedStatus.idStatusOrder}}</span> ?</strong></p>
       <p>All information associated to this user will be permanently deleted.
       <span class="text-danger">This operation can not be undone.</span>
       </p>
@@ -87,29 +87,15 @@
       </button>
     </div>
     <div class="modal-body">
-      <form [formGroup]="editCategoryForm">
+      <form [formGroup]="editStatusForm">
         <div class="form-group">
-            <label for="Description">description</label>
-            <input id="Description" class="form-control form-control-rounded" formControlName="Description" type="text">
-        </div>
-
-        <div class="form-group">
-            <label for="Creationdate">Creationdate</label>
-            <input id="Creationdate" class="form-control form-control-rounded" formControlName="Creationdate" type="text">
+            <label for="idStatus">idStatus</label>
+            <input id="idStatus" class="form-control form-control-rounded" formControlName="idStatus" type="text">
         </div>
         <div class="form-group">
-            <label for="IdUserCreation">IdUserCreation</label>
-            <input id="IdUserCreation" class="form-control form-control-rounded" formControlName="IdUserCreation" type="text">
+            <label for="description">description</label>
+            <input id="description" class="form-control form-control-rounded" formControlName="description" type="text">
         </div>
-        <div class="form-group">
-            <label for="IdStatus">IdStatus</label>
-            <input id="IdStatus" class="form-control form-control-rounded" formControlName="IdStatus" type="text">
-        </div>
-        <div class="form-group">
-            <label for="Image">Image</label>
-            <input id="Image" class="form-control form-control-rounded" formControlName="Image" type="text">
-        </div>
-
       </form>
     </div>
     <div class="modal-footer">

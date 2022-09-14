@@ -87,15 +87,15 @@ export class OrderHeaderMantainanceComponent implements OnInit {
     this.editHeaderForm = this._formBuilder.group({
       idCustomer: [this.selectedHeader.idCustomer],
       idProvider: [this.selectedHeader.idProvider],
-      idClienteAddress: [this.selectedHeader.idClienteAddress],
+      idClientAddress: [this.selectedHeader.idClientAddress],
       description: [this.selectedHeader.description],
       idCategory: [this.selectedHeader.idCategory],
-      idSubcategory: [this.selectedHeader.idSubcategory],
+      idSubCategory: [this.selectedHeader.idSubCategory],
       creationDate: [this.selectedHeader.creationDate],
-      executiondate: [this.selectedHeader.executiondate],
+      executionDate: [this.selectedHeader.executionDate],
       closingDate: [this.selectedHeader.closingDate],
       idStatus: [this.selectedHeader.idStatus],
-      satisfactionLever: [this.selectedHeader.satisfactionLever],
+      satisfactionLevel: [this.selectedHeader.satisfactionLevel],
       customerObservation: [this.selectedHeader.customerObservation]
     });
 
@@ -109,15 +109,15 @@ export class OrderHeaderMantainanceComponent implements OnInit {
         if(result){
           orderHeaderToUpdate.idCustomer = this.editHeaderForm.value?.idCustomer;
           orderHeaderToUpdate.idProvider = this.editHeaderForm.value?.idProvider;
-          orderHeaderToUpdate.idClienteAddress = this.editHeaderForm.value?.idClienteAddress;
+          orderHeaderToUpdate.idClientAddress = this.editHeaderForm.value?.idClientAddress;
           orderHeaderToUpdate.description = this.editHeaderForm.value?.description;
           orderHeaderToUpdate.idCategory = this.editHeaderForm.value?.idCategory;
-          orderHeaderToUpdate.idSubcategory = this.editHeaderForm.value?.idSubcategory;
+          orderHeaderToUpdate.idSubCategory = this.editHeaderForm.value?.idSubCategory;
           orderHeaderToUpdate.creationDate = this.editHeaderForm.value?.creationDate;
-          orderHeaderToUpdate.executiondate = this.editHeaderForm.value?.executiondate;
+          orderHeaderToUpdate.executionDate = this.editHeaderForm.value?.executionDate;
           orderHeaderToUpdate.closingDate = this.editHeaderForm.value?.closingDate;
           orderHeaderToUpdate.idStatus = this.editHeaderForm.value?.idStatus;
-          orderHeaderToUpdate.satisfactionLever = this.editHeaderForm.value?.satisfactionLever;
+          orderHeaderToUpdate.satisfactionLevel = this.editHeaderForm.value?.satisfactionLevel;
           orderHeaderToUpdate.customerObservation = this.editHeaderForm.value?.customerObservation;
           this.OrderHeaderService.UpdateOrderHeader(orderHeaderToUpdate).subscribe({next: (resp) => {
             if(resp){
