@@ -10,11 +10,17 @@ import { OrderStatus } from '../models/order-status-model';
 export class OrderStatusService {
 
   baseUrl = environment.baseUrl;
-  constructor(
-    private http: HttpClient
-    ) { }
+  constructor(private http: HttpClient) { }
 
-  getOrderStatus(): Observable<Array<OrderStatus>> {
-    return this.http.get<OrderStatus[]>(`${this.baseUrl}/api/OrderStatus/GetOrderStatus`);
+  GetAllOrderStatus(): Observable<Array<OrderStatus>> {
+    return this.http.get<Array<OrderStatus>>(`${this.baseUrl}/api/OrderStatus/GetOrderStatus`);
+  }
+
+  DeleteOrderStatus(id: number): Observable<boolean> {
+    return this.http.delete<boolean>(`${this.baseUrl}/api/OrderStatus/Remove/${id}`);
+  }
+
+  UpdateOrderStatus(Status: OrderStatus): Observable<OrderStatus> {
+    return this.http.put<OrderStatus>(`${this.baseUrl}/api/OrderStatus/Update`, Status);
   }
 }

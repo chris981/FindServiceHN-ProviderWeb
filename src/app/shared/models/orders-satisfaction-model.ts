@@ -1,5 +1,5 @@
 export interface OrdersSatisfactionModel {
-    id: number;
+    idSatisfaction: number;
     valorization: number;
     description: string;
 }

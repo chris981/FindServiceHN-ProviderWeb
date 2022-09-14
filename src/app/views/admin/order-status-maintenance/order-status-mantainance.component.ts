@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, UntypedFormControl } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { OrderStatus } from 'src/app/shared/models/order-status-model';
 import { OrderStatusService } from 'src/app/shared/services/order-status.service';
 import { debounceTime } from 'rxjs/operators';
@@ -10,17 +11,34 @@ import { debounceTime } from 'rxjs/operators';
   styleUrls: ['./order-status-mantainance.component.scss']
 })
 export class OrderStatusMantainanceComponent implements OnInit {
+  
+  searchControl: UntypedFormControl = new UntypedFormControl();
   orderStatus: Array<OrderStatus>;
   orderStatusFiltered: Array<OrderStatus>;
-  searchControl: UntypedFormControl = new UntypedFormControl();
-  constructor(private orderStatusService: OrderStatusService) { }
+  selectedStatus: OrderStatus;
+  editStatusForm: FormGroup;
+
+  constructor(
+    private OrderStatusService: OrderStatusService,
+    private modalService: NgbModal, 
+    private _formBuilder: FormBuilder
+  ) { }
 
   ngOnInit(): void {
-    this.GetAllOrderStatuses();
+    this.updateOrderStatus();
     this.searchControl.valueChanges
     .pipe(debounceTime(200))
     .subscribe(value => {
       this.filterData(value);
+    });
+  }
+
+  updateOrderStatus(){
+    this.OrderStatusService.GetAllOrderStatus().subscribe({
+      next: (resp) => {
+        this.orderStatus =  [...resp];
+        this.orderStatusFiltered = resp;
+      }
     });
   }
 
@@ -47,12 +65,46 @@ export class OrderStatusMantainanceComponent implements OnInit {
     this.orderStatusFiltered = rows;
   }
 
-  GetAllOrderStatuses(){
-    this.orderStatusService.getOrderStatus()
-      .subscribe({next: (resp) => {
-        this.orderStatus = [...resp];
-        this.orderStatusFiltered = resp;
-      }});
+  DeleteOrderStatus(content, StatusId: number){
+    this.selectedStatus = this.orderStatus.find(s => s.idStatusOrder == StatusId);
+    this.modalService.open(content, 
+      { 
+        ariaLabelledBy: 'modal-basic-title',
+        centered: true
+      }).result.then((result) => {
+        if(result){
+          this.OrderStatusService.DeleteOrderStatus(StatusId).subscribe({next: (resp) => {
+            if(resp){
+              this.updateOrderStatus();
+            }
+          }})
+        }
+      });
   }
 
+  EditOrderStatus(content, StatusId: number){
+    this.selectedStatus = this.orderStatus.find(s => s.idStatusOrder == StatusId);
+    this.editStatusForm = this._formBuilder.group({
+      idStatus: [this.selectedStatus.idStatus],
+      description: [this.selectedStatus.description]      
+    });
+
+    let orderStatusToUpdate = {... this.selectedStatus}
+
+    this.modalService.open(content, 
+      { 
+        ariaLabelledBy: 'modal-basic-title',
+        centered: true
+      }).result.then((result) => {
+        if(result){
+          orderStatusToUpdate.idStatus = this.editStatusForm.value?.idStatus;
+          orderStatusToUpdate.description = this.editStatusForm.value?.description;
+          this.OrderStatusService.UpdateOrderStatus(orderStatusToUpdate).subscribe({next: (resp) => {
+            if(resp){
+              this.updateOrderStatus();
+            }
+          }})
+        }
+      });
+  }
 }
