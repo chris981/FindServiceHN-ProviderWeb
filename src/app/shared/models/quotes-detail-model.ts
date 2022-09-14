@@ -6,5 +6,5 @@ export interface QuotesDetail {
     idProduct: number;
     price: number;
     amount: number;
-    idStatus: number;
+    iStatus: number;
 }

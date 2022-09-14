@@ -2,15 +2,15 @@ export interface QuotesHeaderModel {
     idQuoteHeader: number;
     idQuoteDetail: number;
     idCustomer: number;
-    idProvder: number;
-    idClienteAddress: number;
+    idProvider: number;
+    idClientAddres: number;
     description: string;
     idCategory: number;
-    idSubCategory: number;
+    idSubcategory: number;
     creationDate: Date;
-    assignmentDate: Date;
+    assigmentDate: Date;
     idStatus: number;
     customerObservation: string;
-    providerObervation: string;
-    idStatusCreationdate: number;
+    providerObservation: string;
+    idStatusCreationDate: number;
 }
