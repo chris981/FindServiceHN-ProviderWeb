@@ -1,8 +1,8 @@
 export interface SubcategoriesModel {
-    idSubCategories: number;
+    idSubCategory: number;
+    description: string;
     idCategory: number;
-    description: string;   
-    creationDate: Date; 
     idUserCreation: number;
+    creationDate: Date;
     image: string;
 }
