@@ -76,7 +76,7 @@ export class DashboardV4Component implements OnInit {
 				}]
 			}
 		};
-		this.products$ = this.productService.getProducts();
+		this.products$ = this.productService.GetAllProduct();
 
 	}
 

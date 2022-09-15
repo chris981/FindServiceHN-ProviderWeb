@@ -1,4 +1,4 @@
-export interface Product {
+export interface ProductModel {
     idProduct: number;
     idProvider: number;
     idCategory: number;
@@ -8,3 +8,4 @@ export interface Product {
     price: number;
     shippingStatus: string;
 }
+
