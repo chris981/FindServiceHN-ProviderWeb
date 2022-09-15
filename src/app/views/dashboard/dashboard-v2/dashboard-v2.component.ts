@@ -67,7 +67,7 @@ export class DashboardV2Component implements OnInit {
 			}
 		};
 		this.chartLineOption3.xAxis.data = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-		this.products$ = this.productService.getProducts();
+		this.products$ = this.productService.GetAllProduct();
 
   }
 
