@@ -1,12 +1,13 @@
 export interface CustomersModel {
     idCustomer: number;
-    emailPassword: string;
+    emailpassword: string;
     rtn: number;
-    identificationCard: number;
+    identificationcard: number;
     name: string;
     lastName: string;
+    idCustomerAddress: number;
     country: string;
-    deparmento: string;
+    department: string;
     municipality: string;
     birthDate: Date;
     phone: number;

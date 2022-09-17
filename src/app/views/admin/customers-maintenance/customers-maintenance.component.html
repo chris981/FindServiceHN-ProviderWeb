@@ -1,1 +1,250 @@
-<p>customers-maintenance works!</p>
+
+<div class="">
+    <div class="breadcrumb">
+        <h1>Admin</h1>
+        <ul>
+            <li><a>Customers Mantainance</a></li>
+        </ul>
+    </div>
+
+    <div class="separator-breadcrumb border-top"></div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Customers List</h5>
+            <div>
+                <div class="row">
+                    <div class="col-1">
+                        <button type="button" class="btn btn-success btn-rounded"><i title="Add Status" class="i-Add-UserStar"></i></button>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input id="searchUsers" placeholder="Search Users" [formControl]="searchControl"
+                                class="form-control form-control-rounded" type="text">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card  o-hidden">
+                            <ngx-datatable style="height: 500px; box-shadow: none" class="material fullscreen"
+                                [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="60"
+                                [scrollbarH]="false" [scrollbarV]="true" [rows]="customerFiltered">
+                                <ngx-datatable-column name="idCustomer" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        idCustomer
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="emailpassword" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        emailpassword
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="rtn" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        rtn
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="identificationcard" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        identificationcard
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="name" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        name
+                                    </ng-template>
+                                </ngx-datatable-column>
+
+                                <ngx-datatable-column name="lastName" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        lastName
+                                    </ng-template>
+                                </ngx-datatable-column>
+
+                                <ngx-datatable-column name="idCustomerAddress" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        idCustomerAddress
+                                    </ng-template>
+                                </ngx-datatable-column>
+
+                                <ngx-datatable-column name="country" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        country
+                                    </ng-template>
+                                </ngx-datatable-column>
+
+                                <ngx-datatable-column name="department" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        department
+                                    </ng-template>
+                                </ngx-datatable-column>
+
+                                <ngx-datatable-column name="municipality" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        municipality
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="birthDate" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        birthDate
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="phone" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        phone
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="status" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        status
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="profilePicture" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        profilePicture
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="mainProfile" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        mainProfile
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="keyValidation" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        keyValidation
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="userType" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        userType
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="registrationDate" [minWidth]="40" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        registrationDate
+                                    </ng-template>
+                                </ngx-datatable-column>
+
+
+                                <ngx-datatable-column name="idCustomer" [minWidth]="60" [maxWidth]="200">
+                                    <ng-template ngx-datatable-header-template>
+                                        Options
+                                    </ng-template>
+                                    <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+                                        <button (click)="DeleteCustomer(modalConfirm, value)" type="button" class="btn btn-danger btn-rounded m-1"><i title="Remove User" class="i-Remove-User"></i></button>
+                                        <button (click)="EditCustomer(EditModal, value)" type="button" class="btn btn-warning btn-rounded m-1"><i title="Update User" class="i-Checked-User"></i></button>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                            </ngx-datatable>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #modalConfirm let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-title">Customer deletion</h4>
+      <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p><strong>Are you sure you want to delete <span class="text-primary">{{selectedCustomer.idCustomer}}</span> ?</strong></p>
+      <p>All information associated to this user will be permanently deleted.
+      <span class="text-danger">This operation can not be undone.</span>
+      </p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary btn-rounded" (click)="modal.dismiss(false)">Cancel</button>
+      <button type="button" ngbAutofocus class="btn btn-danger btn-rounded" (click)="modal.close(true)">Ok</button>
+    </div>
+</ng-template>
+
+<ng-template #EditModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-title">Update Customer</h4>
+      <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="editCustomerForm">
+        <div class="form-group">
+            <label for="emailpassword">emailpassword</label>
+            <input id="emailpassword" class="form-control form-control-rounded" formControlName="emailpassword" type="text">
+        </div>
+        <div class="form-group">
+            <label for="rtn">rtn</label>
+            <input id="rtn" class="form-control form-control-rounded" formControlName="rtn" type="text">
+        </div>
+        <div class="form-group">
+            <label for="identificationcard">identificationcard</label>
+            <input id="identificationcard" class="form-control form-control-rounded" formControlName="identificationcard" type="text">
+        </div>
+        <div class="form-group">
+            <label for="name">name</label>
+            <input id="name" class="form-control form-control-rounded" formControlName="name" type="text">
+        </div>
+        <div class="form-group">
+            <label for="lastName">lastName</label>
+            <input id="lastName" class="form-control form-control-rounded" formControlName="lastName" type="text">
+        </div>
+        <div class="form-group">
+            <label for="idCustomerAddress">idCustomerAddress</label>
+            <input id="idCustomerAddress" class="form-control form-control-rounded" formControlName="idCustomerAddress" type="text">
+        </div>
+        <div class="form-group">
+            <label for="country">country</label>
+            <input id="country" class="form-control form-control-rounded" formControlName="country" type="text">
+        </div>
+        <div class="form-group">
+            <label for="department">department</label>
+            <input id="department" class="form-control form-control-rounded" formControlName="department" type="text">
+        </div>
+        <div class="form-group">
+            <label for="municipality">municipality</label>
+            <input id="municipality" class="form-control form-control-rounded" formControlName="municipality" type="text">
+        </div>
+        <div class="form-group">
+            <label for="birthDate">birthDate</label>
+            <input id="birthDate" class="form-control form-control-rounded" formControlName="birthDate" type="text">
+        </div>
+        <div class="form-group">
+            <label for="phone">phone</label>
+            <input id="phone" class="form-control form-control-rounded" formControlName="phone" type="text">
+        </div>
+        <div class="form-group">
+            <label for="status">status</label>
+            <input id="status" class="form-control form-control-rounded" formControlName="status" type="text">
+        </div>
+        <div class="form-group">
+            <label for="profilePicture">profilePicture</label>
+            <input id="profilePicture" class="form-control form-control-rounded" formControlName="profilePicture" type="text">
+        </div>
+        <div class="form-group">
+            <label for="mainProfile">mainProfile</label>
+            <input id="mainProfile" class="form-control form-control-rounded" formControlName="mainProfile" type="text">
+        </div>
+        <div class="form-group">
+            <label for="keyValidation">keyValidation</label>
+            <input id="keyValidation" class="form-control form-control-rounded" formControlName="keyValidation" type="text">
+        </div>
+        <div class="form-group">
+            <label for="userType">userType</label>
+            <input id="userType" class="form-control form-control-rounded" formControlName="userType" type="text">
+        </div>
+        <div class="form-group">
+            <label for="registrationDate">registrationDate</label>
+            <input id="registrationDate" class="form-control form-control-rounded" formControlName="registrationDate" type="text">
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary btn-rounded" (click)="modal.dismiss(false)">Cancel</button>
+      <button type="button" ngbAutofocus class="btn btn-primary btn-rounded" (click)="modal.close(true)">Save</button>
+    </div>
+</ng-template>
+

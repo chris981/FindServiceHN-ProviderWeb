@@ -117,8 +117,6 @@ export class ProductMantainanceComponent implements OnInit {
             }
           }})
         }
-      });
-
-      
+      });  
   }  
 }

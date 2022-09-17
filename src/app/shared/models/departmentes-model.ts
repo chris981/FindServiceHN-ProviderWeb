@@ -2,7 +2,7 @@ export interface DepartmentesModel {
     idDepartment: number;
     idCountry: number;
     description: string;
-    creationDate: Date;
+    createdDate: Date;
     idUserCreation: number;
     condition: string;
 }
