@@ -19,6 +19,8 @@ export class ServiceStatusMantainanceComponent implements OnInit {
   servicesStatusFiltered: Array<ServiceStatusModel>;
   selectedServicesStatus: ServiceStatusModel;
   editServicesStatusForm: FormGroup;
+  createServicesStatusForm: FormGroup;
+
 
   constructor(
     private servicesStatusService: ServiceStatusService,
@@ -109,6 +111,30 @@ export class ServiceStatusMantainanceComponent implements OnInit {
           }})
         }
       });
+  }
+
+  CreateServicesStatus(content){
+
+    this.createServicesStatusForm = this._formBuilder.group({
+      idStatus: null,
+      description: null
+    });
+    let servicesStatusToCreate = {...this.selectedServicesStatus}
+    this.modalService.open(content, 
+      {
+        ariaLabelledBy: 'modal-basic-title',
+        centered: true
+      }).result.then((result) => {
+        if(result){
+          servicesStatusToCreate.idStatus = this.createServicesStatusForm.value?.idStatus;
+          servicesStatusToCreate.description = this.createServicesStatusForm.value?.description;
+          this.servicesStatusService.CreateServicesStatus(servicesStatusToCreate).subscribe({next: (resp) => {
+            if(resp){
+              this.updateServicesStatus();
+            }
+          }})
+        }
+      })
   }
 
 }

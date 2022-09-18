@@ -23,4 +23,8 @@ export class ProvidersAttentionService {
   UpdateProviderAttention(category: ProviderAttentionModel): Observable<ProviderAttentionModel> {
     return this.http.put<ProviderAttentionModel>(`${this.baseUrl}/api/ProvidersAttention/Update`, category);
   }
+
+  CreateProviderAttention(category: ProviderAttentionModel): Observable<ProviderAttentionModel> {
+    return this.http.post<ProviderAttentionModel>(`${this.baseUrl}/api/ProvidersAttention/Create`, category);
+  }
 }
