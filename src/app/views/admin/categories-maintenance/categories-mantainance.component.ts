@@ -17,6 +17,7 @@ export class CategoriesMantainanceComponent implements OnInit {
   categoryFiltered: Array<CategoriesModel>;
   selectedCategory: CategoriesModel;
   editCategoryForm: FormGroup;
+  createCategoryForm: FormGroup;
 
   constructor(
     private categoriesService: CategoriesService,
@@ -82,14 +83,44 @@ export class CategoriesMantainanceComponent implements OnInit {
       });
   }
 
+  CreateCategory(content){
+
+    this.createCategoryForm = this._formBuilder.group({
+      description: null,
+      creationDate: null,
+      idUserCreation: null,
+      idStatus: null,
+      image: null
+    });
+    let categoryToCreate = {...this.selectedCategory}
+    this.modalService.open(content, 
+      {
+        ariaLabelledBy: 'modal-basic-title',
+        centered: true
+      }).result.then((result) => {
+        if(result){
+          categoryToCreate.description = this.createCategoryForm.value?.description;
+          categoryToCreate.creationDate = this.createCategoryForm.value?.creationDate;
+          categoryToCreate.idUserCreation = this.createCategoryForm.value?.idUserCreation;
+          categoryToCreate.idStatus = this.createCategoryForm.value?.idStatus;
+          categoryToCreate.image = this.createCategoryForm.value?.image;
+          this.categoriesService.CreateCategory(categoryToCreate).subscribe({next: (resp) => {
+            if(resp){
+              this.updateCategory();
+            }
+          }})
+        }
+      })
+  }
+
   EditCategory(content, categoryId: number){
     this.selectedCategory = this.categories.find(s => s.idCategory == categoryId);
     this.editCategoryForm = this._formBuilder.group({
-      Description: [this.selectedCategory.description],
-      Creationdate: [this.selectedCategory.creationdate],
-      IdUserCreation: [this.selectedCategory.idUserCreation],
-      IdStatus: [this.selectedCategory.idStatus],
-      Image: [this.selectedCategory.image]
+      description: [this.selectedCategory.description],
+      creationDate: [this.selectedCategory.creationDate],
+      idUserCreation: [this.selectedCategory.idUserCreation],
+      idStatus: [this.selectedCategory.idStatus],
+      image: [this.selectedCategory.image]
     });
 
     let categoryToUpdate = {... this.selectedCategory}
@@ -100,11 +131,11 @@ export class CategoriesMantainanceComponent implements OnInit {
         centered: true
       }).result.then((result) => {
         if(result){
-          categoryToUpdate.description = this.editCategoryForm.value?.Description;
-          categoryToUpdate.creationdate = this.editCategoryForm.value?.Creationdate;
-          categoryToUpdate.idUserCreation = this.editCategoryForm.value?.IdUserCreation;
-          categoryToUpdate.idStatus = this.editCategoryForm.value?.IdStatus;
-          categoryToUpdate.image = this.editCategoryForm.value?.Image;
+          categoryToUpdate.description = this.editCategoryForm.value?.description;
+          categoryToUpdate.creationDate = this.editCategoryForm.value?.creationDate;
+          categoryToUpdate.idUserCreation = this.editCategoryForm.value?.idUserCreation;
+          categoryToUpdate.idStatus = this.editCategoryForm.value?.idStatus;
+          categoryToUpdate.image = this.editCategoryForm.value?.image;
           this.categoriesService.UpdateCategory(categoryToUpdate).subscribe({next: (resp) => {
             if(resp){
               this.updateCategory();

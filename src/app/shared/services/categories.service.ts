@@ -15,6 +15,9 @@ export class CategoriesService {
   GetAllCategories(): Observable<Array<CategoriesModel>> {
     return this.http.get<Array<CategoriesModel>>(`${this.baseUrl}/api/Category/GetCategories`);
   }
+  CreateCategory(category: CategoriesModel): Observable<CategoriesModel> {
+    return this.http.post<CategoriesModel>(`${this.baseUrl}/api/Category/Create`, category);
+  }
 
   DeleteCategory(id: number): Observable<boolean> {
     return this.http.delete<boolean>(`${this.baseUrl}/api/Category/Remove/${id}`);
