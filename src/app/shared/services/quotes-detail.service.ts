@@ -24,4 +24,8 @@ export class QuotesDetailService {
   UpdateQuotesDetail(category: QuotesDetail): Observable<QuotesDetail> {
     return this.http.put<QuotesDetail>(`${this.baseUrl}/api/QuotesDetail/Update`, category);
   }
+
+  CreateQuotesDetail(category: QuotesDetail): Observable<QuotesDetail> {
+    return this.http.post<QuotesDetail>(`${this.baseUrl}/api/QuotesDetail/Create`, category);
+  }
 }

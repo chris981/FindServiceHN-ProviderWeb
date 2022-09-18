@@ -23,6 +23,10 @@ export class QuotesHeaderService {
   UpdateQuotesHeader(category: QuotesHeaderModel): Observable<QuotesHeaderModel> {
     return this.http.put<QuotesHeaderModel>(`${this.baseUrl}/api/QuotesHeader/Update`, category);
   }
+
+  CreateQuotesHeader(category: QuotesHeaderModel): Observable<QuotesHeaderModel> {
+    return this.http.post<QuotesHeaderModel>(`${this.baseUrl}/api/QuotesHeader/Create`, category);
+  }
 }
 
 

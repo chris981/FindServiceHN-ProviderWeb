@@ -18,6 +18,7 @@ export class ProvidersAttentionComponent implements OnInit {
   providersAttentionFiltered: Array<ProviderAttentionModel>;
   selectedprovidersAttention: ProviderAttentionModel;
   editprovidersAttentionForm: FormGroup;
+  createprovidersAttentionForm: FormGroup;
 
   constructor(
     private providersAttentionService: ProvidersAttentionService,
@@ -112,5 +113,33 @@ export class ProvidersAttentionComponent implements OnInit {
           }})
         }
       });
+  }
+
+  CreateProvidersAttention(content){
+
+    this.createprovidersAttentionForm = this._formBuilder.group({
+      description: null,
+      typeAttention: null,
+      idStatus: null,
+      creationDate: null
+    });
+    let providersAttentionToCreate = {...this.selectedprovidersAttention}
+    this.modalService.open(content, 
+      {
+        ariaLabelledBy: 'modal-basic-title',
+        centered: true
+      }).result.then((result) => {
+        if(result){
+          providersAttentionToCreate.description = this.createprovidersAttentionForm.value?.description;
+          providersAttentionToCreate.typeAttention = this.createprovidersAttentionForm.value?.typeAttention;
+          providersAttentionToCreate.idStatus = this.createprovidersAttentionForm.value?.idStatus;
+          providersAttentionToCreate.creationDate = this.createprovidersAttentionForm.value?.creationDate;
+          this.providersAttentionService.CreateProviderAttention(providersAttentionToCreate).subscribe({next: (resp) => {
+            if(resp){
+              this.updateProvidersAttention();
+            }
+          }})
+        }
+      })
   }
 }

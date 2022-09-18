@@ -23,4 +23,8 @@ export class ServiceStatusService {
   UpdateServicesStatus(category: ServiceStatusModel): Observable<ServiceStatusModel> {
     return this.http.put<ServiceStatusModel>(`${this.baseUrl}/api/ServicesStatus/Update`, category);
   }
+
+  CreateServicesStatus(category: ServiceStatusModel): Observable<ServiceStatusModel> {
+    return this.http.post<ServiceStatusModel>(`${this.baseUrl}/api/ServicesStatus/Create`, category);
+  }
 }

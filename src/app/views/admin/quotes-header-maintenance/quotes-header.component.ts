@@ -17,6 +17,7 @@ export class QuotesHeaderComponent implements OnInit {
   quotesHeaderFiltered: Array<QuotesHeaderModel>;
   selectedQuotesHeader: QuotesHeaderModel;
   editQuotesHeaderForm: FormGroup;
+  createQuotesHeaderForm : FormGroup;
 
   constructor(
     private quotesHeaderService: QuotesHeaderService,
@@ -132,4 +133,54 @@ export class QuotesHeaderComponent implements OnInit {
         }
       });
   }
+
+  
+  CreateQuotesHeader(content){
+
+    this.createQuotesHeaderForm = this._formBuilder.group({
+      idQuoteDetail: null,
+      idCustomer: null,
+      idProvider: null,
+      description: null,
+      idClientAddres: null,
+      idCategory: null,
+      idSubcategory: null,
+      creationDate: null,
+      idStatus: null,
+      assigmentDate: null,
+      customerObservation: null,
+      providerObservation: null,
+      idStatusCreationDate: null,
+      
+    });
+    let QuotesHeaderToCreate = {...this.selectedQuotesHeader}
+    this.modalService.open(content, 
+      {
+        ariaLabelledBy: 'modal-basic-title',
+        centered: true
+      }).result.then((result) => {
+        if(result){
+          QuotesHeaderToCreate.idQuoteDetail = this.createQuotesHeaderForm.value?.idQuoteDetail;
+          QuotesHeaderToCreate.idCustomer = this.createQuotesHeaderForm.value?.idCustomer;
+          QuotesHeaderToCreate.idProvider = this.createQuotesHeaderForm.value?.idProvider;
+          QuotesHeaderToCreate.description = this.createQuotesHeaderForm.value?.description;
+          QuotesHeaderToCreate.idClientAddres = this.createQuotesHeaderForm.value?.idClientAddres;
+          QuotesHeaderToCreate.idCategory = this.createQuotesHeaderForm.value?.idCategory;
+          QuotesHeaderToCreate.idSubcategory = this.createQuotesHeaderForm.value?.idSubcategory;
+          QuotesHeaderToCreate.creationDate = this.createQuotesHeaderForm.value?.creationDate;
+          QuotesHeaderToCreate.assigmentDate = this.createQuotesHeaderForm.value?.assigmentDate;
+          QuotesHeaderToCreate.customerObservation = this.createQuotesHeaderForm.value?.customerObservation;
+          QuotesHeaderToCreate.providerObservation = this.createQuotesHeaderForm.value?.providerObservation;
+          QuotesHeaderToCreate.idStatusCreationDate = this.createQuotesHeaderForm.value?.idStatusCreationDate;
+
+          
+          this.quotesHeaderService.CreateQuotesHeader(QuotesHeaderToCreate).subscribe({next: (resp) => {
+            if(resp){
+              this.updateQuotesHeader();
+            }
+          }})
+        }
+      })
+  }
+
 }
