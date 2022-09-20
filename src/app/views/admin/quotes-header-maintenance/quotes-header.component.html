@@ -15,7 +15,7 @@
             <div>
                 <div class="row">
                     <div class="col-1">
-                        <button type="button" class="btn btn-success btn-rounded"><i title="Add Status" class="i-Add-UserStar"></i></button>
+                        <button (click)="CreateQuotesHeader(CreateModal)" type="button" class="btn btn-success btn-rounded"><i title="Add Status" class="i-Add-UserStar"></i></button>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
@@ -153,6 +153,76 @@
     </div>
     <div class="modal-body">
       <form [formGroup]="editQuotesHeaderForm">
+        <div class="form-group">
+            <label for="idQuoteDetail">idQuoteDetail</label>
+            <input id="idQuoteDetail" class="form-control form-control-rounded" formControlName="idQuoteDetail" type="text">
+        </div>
+        <div class="form-group">
+            <label for="idCustomer">idCustomer</label>
+            <input id="idCustomer" class="form-control form-control-rounded" formControlName="idCustomer" type="text">
+        </div>
+        <div class="form-group">
+            <label for="idProvider">idProvider</label>
+            <input id="idProvider" class="form-control form-control-rounded" formControlName="idProvider" type="text">
+        </div>
+        <div class="form-group">
+            <label for="idClientAddres">idClientAddres</label>
+            <input id="idClientAddres" class="form-control form-control-rounded" formControlName="idClientAddres" type="text">
+        </div>
+        <div class="form-group">
+            <label for="description">description</label>
+            <input id="description" class="form-control form-control-rounded" formControlName="description" type="text">
+        </div>
+        <div class="form-group">
+            <label for="idCategory">idCategory</label>
+            <input id="idCategory" class="form-control form-control-rounded" formControlName="idCategory" type="text">
+        </div>
+        <div class="form-group">
+            <label for="idSubcategory">idSubcategory</label>
+            <input id="idSubcategory" class="form-control form-control-rounded" formControlName="idSubcategory" type="text">
+        </div>
+        <div class="form-group">
+            <label for="creationDate">creationDate</label>
+            <input id="creationDate" class="form-control form-control-rounded" formControlName="creationDate" type="text">
+        </div>
+        <div class="form-group">
+            <label for="assigmentDate">assigmentDate</label>
+            <input id="assigmentDate" class="form-control form-control-rounded" formControlName="assigmentDate" type="text">
+        </div>
+        <div class="form-group">
+            <label for="idStatus">idStatus</label>
+            <input id="idStatus" class="form-control form-control-rounded" formControlName="idStatus" type="text">
+        </div>
+        <div class="form-group">
+            <label for="customerObservation">customerObservation</label>
+            <input id="customerObservation" class="form-control form-control-rounded" formControlName="customerObservation" type="text">
+        </div>
+        <div class="form-group">
+            <label for="providerObservation">providerObservation</label>
+            <input id="providerObservation" class="form-control form-control-rounded" formControlName="providerObservation" type="text">
+        </div>
+        <div class="form-group">
+            <label for="idStatusCreationDate">idStatusCreationDate</label>
+            <input id="idStatusCreationDate" class="form-control form-control-rounded" formControlName="idStatusCreationDate" type="text">
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary btn-rounded" (click)="modal.dismiss(false)">Cancel</button>
+      <button type="button" ngbAutofocus class="btn btn-primary btn-rounded" (click)="modal.close(true)">Save</button>
+    </div>
+</ng-template>
+
+
+<ng-template #CreateModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-title">Create Quotes Header</h4>
+      <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="createQuotesHeaderForm">
         <div class="form-group">
             <label for="idQuoteDetail">idQuoteDetail</label>
             <input id="idQuoteDetail" class="form-control form-control-rounded" formControlName="idQuoteDetail" type="text">

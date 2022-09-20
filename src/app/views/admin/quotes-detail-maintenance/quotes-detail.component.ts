@@ -17,6 +17,7 @@ export class QuotesDetailComponent implements OnInit {
   quotesDetailFiltered: Array<QuotesDetail>;
   selectedQuotesDetail: QuotesDetail;
   editQuotesDetailForm: FormGroup;
+  createQuotesDetailForm: FormGroup;
 
   constructor(
     private quotesDetailService: QuotesDetailService,
@@ -118,6 +119,42 @@ export class QuotesDetailComponent implements OnInit {
           }})
         }
       });
+  }
+
+  CreateQuotesDetail(content){
+
+    this.createQuotesDetailForm = this._formBuilder.group({
+      idCustomer: null,
+      idProvider: null,
+      line: null,
+      idProduct: null,
+      price: null,
+      amount: null,
+      iStatus: null
+      
+    });
+    let quotesDetail = {...this.selectedQuotesDetail}
+    this.modalService.open(content, 
+      {
+        ariaLabelledBy: 'modal-basic-title',
+        centered: true
+      }).result.then((result) => {
+        if(result){
+          quotesDetail.idCustomer = this.createQuotesDetailForm.value?.idCustomer;
+          quotesDetail.idProvider = this.createQuotesDetailForm.value?.idProvider;
+          quotesDetail.line = this.createQuotesDetailForm.value?.line;
+          quotesDetail.idProduct = this.createQuotesDetailForm.value?.idProduct;
+          quotesDetail.price = this.createQuotesDetailForm.value?.price;
+          quotesDetail.amount = this.createQuotesDetailForm.value?.amount;
+          quotesDetail.iStatus = this.createQuotesDetailForm.value?.iStatus;
+          
+          this.quotesDetailService.CreateQuotesDetail(quotesDetail).subscribe({next: (resp) => {
+            if(resp){
+              this.updateQuotesDetail();
+            }
+          }})
+        }
+      })
   }
 
 }
