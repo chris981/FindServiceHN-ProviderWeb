@@ -23,4 +23,8 @@ export class CustomersAddressesService {
   UpdateCustomerAddress(customerAddress: CustomersAddressModel): Observable<CustomersAddressModel> {
     return this.http.put<CustomersAddressModel>(`${this.baseUrl}/api/CustomerAddress/Update`, customerAddress);
   }
+
+  CreateCustomerAddress(customerAddress: CustomersAddressModel): Observable<CustomersAddressModel> {
+    return this.http.post<CustomersAddressModel>(`${this.baseUrl}/api/CustomerAddress/Create`, customerAddress);
+  }
 }

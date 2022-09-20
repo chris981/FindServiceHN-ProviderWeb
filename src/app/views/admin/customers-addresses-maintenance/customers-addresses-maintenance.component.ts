@@ -18,6 +18,7 @@ export class CustomersAddressesMaintenanceComponent implements OnInit {
   customerAddressFiltered: Array<CustomersAddressModel>;
   selectedCustomerAddress: CustomersAddressModel;
   editCustomerAddressForm: FormGroup;
+  createCustomerAddressForm: FormGroup;
 
   constructor(
     private customersAddressService: CustomersAddressesService,
@@ -82,6 +83,40 @@ export class CustomersAddressesMaintenanceComponent implements OnInit {
         }
       });
   }
+  CreateCustomerAddress(content){
+    this.createCustomerAddressForm = this._formBuilder.group({
+      idCustomer: null,
+      idCountry: null,
+      idDepartment: null,
+      idMunicipality: null,
+      direction: null,
+      observations: null,
+      idStatus: null
+    });
+
+    let customerAddressCreate = {... this.selectedCustomerAddress}
+
+    this.modalService.open(content, 
+      { 
+        ariaLabelledBy: 'modal-basic-title',
+        centered: true
+      }).result.then((result) => {
+        if(result){
+          customerAddressCreate.idCustomer = this.createCustomerAddressForm.value?.idCustomer;
+          customerAddressCreate.idCountry = this.createCustomerAddressForm.value?.idCountry;
+          customerAddressCreate.idDepartment = this.createCustomerAddressForm.value?.idDepartment;
+          customerAddressCreate.idMunicipality = this.createCustomerAddressForm.value?.idMunicipality;
+          customerAddressCreate.direction = this.createCustomerAddressForm.value?.direction;
+          customerAddressCreate.observations = this.createCustomerAddressForm.value?.observations;
+          customerAddressCreate.idStatus = this.createCustomerAddressForm.value?.idStatus;
+          this.customersAddressService.CreateCustomerAddress(customerAddressCreate).subscribe({next: (resp) => {
+            if(resp){
+              this.updateCustomerAddress();
+            }
+          }})
+        }
+      });
+   }
 
   EditCustomerAddress(content, idCustomerAddress: number){
     this.selectedCustomerAddress = this.customerAddress.find(s => s.idCustomerAddress == idCustomerAddress);

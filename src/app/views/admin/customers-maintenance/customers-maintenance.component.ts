@@ -17,6 +17,7 @@ export class CustomersMaintenanceComponent implements OnInit {
   customerFiltered: Array<CustomersModel>;
   selectedCustomer: CustomersModel;
   editCustomerForm: FormGroup;
+  createCustomerForm: FormGroup;
 
   constructor(
     private customerService: CustomersService,
@@ -81,6 +82,60 @@ export class CustomersMaintenanceComponent implements OnInit {
         }
       });
   }
+  CreateCustomer(content){
+    this.createCustomerForm = this._formBuilder.group({
+      emailpassword: null,
+      rtn: null,
+      identificationcard: null,
+      name: null,
+      lastName: null,
+      idCustomerAddress: null,
+      country: null,
+      department: null,
+      municipality: null,
+      birthDate: null,
+      phone: null,
+      status: null,
+      profilePicture: null,
+      mainProfile: null,
+      keyValidation: null,
+      userType: null,
+      registrationDate: null 
+    });
+
+    let customerToCreate = {... this.selectedCustomer}
+
+    this.modalService.open(content, 
+      { 
+        ariaLabelledBy: 'modal-basic-title',
+        centered: true
+      }).result.then((result) => {
+        if(result){
+          customerToCreate.emailpassword = this.createCustomerForm.value?.emailpassword;
+          customerToCreate.rtn = this.createCustomerForm.value?.rtn;
+          customerToCreate.identificationcard = this.createCustomerForm.value?.identificationcard;
+          customerToCreate.name = this.createCustomerForm.value?.name;
+          customerToCreate.lastName = this.createCustomerForm.value?.lastName;
+          customerToCreate.idCustomerAddress = this.createCustomerForm.value?.idCustomerAddress;
+          customerToCreate.country = this.createCustomerForm.value?.country;
+          customerToCreate.department = this.createCustomerForm.value?.department;
+          customerToCreate.municipality = this.createCustomerForm.value?.municipality;
+          customerToCreate.birthDate = this.createCustomerForm.value?.birthDate;
+          customerToCreate.phone = this.createCustomerForm.value?.phone;
+          customerToCreate.status = this.createCustomerForm.value?.status;
+          customerToCreate.profilePicture = this.createCustomerForm.value?.profilePicture;
+          customerToCreate.mainProfile = this.createCustomerForm.value?.mainProfile;
+          customerToCreate.keyValidation = this.createCustomerForm.value?.keyValidation;
+          customerToCreate.registrationDate = this.createCustomerForm.value?.registrationDate;
+
+          this.customerService.CreateCustomer(customerToCreate).subscribe({next: (resp) => {
+            if(resp){
+              this.updateCustomer();
+            }
+          }})
+        }
+      });
+   }
 
   EditCustomer(content, idCustomer: number){
     this.selectedCustomer = this.customer.find(s => s.idCustomer == idCustomer);

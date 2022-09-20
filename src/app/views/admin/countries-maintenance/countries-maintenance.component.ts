@@ -17,6 +17,7 @@ export class CountriesMaintenanceComponent implements OnInit {
   countriesFiltered: Array<CountriesModel>;
   selectedCountries: CountriesModel;
   editCountriesForm: FormGroup;
+  createCountriesForm: FormGroup;
 
   constructor(
     private countriesService: CountriesService,
@@ -34,7 +35,7 @@ export class CountriesMaintenanceComponent implements OnInit {
   }
 
   updateCountry(){
-    this.countriesService.GetAllCustomers().subscribe({
+    this.countriesService.GetAllCountry().subscribe({
       next: (resp) => {
         this.countries =  [...resp];
         this.countriesFiltered = resp;
@@ -73,13 +74,43 @@ export class CountriesMaintenanceComponent implements OnInit {
         centered: true
       }).result.then((result) => {
         if(result){
-          this.countriesService.DeleteCustomer(idCountry).subscribe({next: (resp) => {
+          this.countriesService.DeleteCountry(idCountry).subscribe({next: (resp) => {
             if(resp){
               this.updateCountry();
             }
           }})
         }
       });
+  }
+
+  CreateCountry(content){
+
+    this.createCountriesForm = this._formBuilder.group({
+      idStatus: null,
+      name: null,
+      countryCode: null,
+      idUserCreation: null,
+      creationDate: null
+    });
+    let countryToCreate = {...this.selectedCountries}
+    this.modalService.open(content, 
+      {
+        ariaLabelledBy: 'modal-basic-title',
+        centered: true
+      }).result.then((result) => {
+        if(result){
+          countryToCreate.idStatus = this.createCountriesForm.value?.idStatus;
+          countryToCreate.name = this.createCountriesForm.value?.name;
+          countryToCreate.countryCode = this.createCountriesForm.value?.countryCode;
+          countryToCreate.idUserCreation = this.createCountriesForm.value?.idUserCreation;
+          countryToCreate.creationDate = this.createCountriesForm.value?.creationDate;
+          this.countriesService.CreateCountry(countryToCreate).subscribe({next: (resp) => {
+            if(resp){
+              this.updateCountry();
+            }
+          }})
+        }
+      })
   }
 
   EditCountry(content, idCountry: number){
@@ -105,7 +136,7 @@ export class CountriesMaintenanceComponent implements OnInit {
           countryToUpdate.idStatus = this.editCountriesForm.value?.idStatus;
           countryToUpdate.idUserCreation = this.editCountriesForm.value?.idUserCreation;
           countryToUpdate.creationDate = this.editCountriesForm.value?.creationDate;
-          this.countriesService.UpdateCustomer(countryToUpdate).subscribe({next: (resp) => {
+          this.countriesService.UpdateCountry(countryToUpdate).subscribe({next: (resp) => {
             if(resp){
               this.updateCountry();
             }

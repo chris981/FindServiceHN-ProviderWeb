@@ -23,4 +23,8 @@ export class MunicipalitiesService {
   UpdateMunicipality(countries: MunicipalitiesModel): Observable<MunicipalitiesModel> {
     return this.http.put<MunicipalitiesModel>(`${this.baseUrl}/api/Municipalities/Update`, countries);
   }
+
+  CreateMunicipalityt(countries: MunicipalitiesModel): Observable<MunicipalitiesModel> {
+    return this.http.post<MunicipalitiesModel>(`${this.baseUrl}/api/Municipalities/Create`, countries);
+  }
 }

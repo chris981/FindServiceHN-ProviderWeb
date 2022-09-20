@@ -23,4 +23,8 @@ export class DepartmentsService {
   UpdateDepartment(departments: DepartmentesModel): Observable<DepartmentesModel> {
     return this.http.put<DepartmentesModel>(`${this.baseUrl}/api/Departments/Update`, departments);
   }
+
+  CreateDepartment(departments: DepartmentesModel): Observable<DepartmentesModel> {
+    return this.http.post<DepartmentesModel>(`${this.baseUrl}/api/Departments/Create`, departments);
+  }
 }

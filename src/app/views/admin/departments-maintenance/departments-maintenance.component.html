@@ -15,7 +15,7 @@
             <div>
                 <div class="row">
                     <div class="col-1">
-                        <button type="button" class="btn btn-success btn-rounded"><i title="Add Status" class="i-Add-UserStar"></i></button>
+                        <button (click)="CreateDepartment(EditModal)" type="button" class="btn btn-success btn-rounded"><i title="Add Status" class="i-Add-UserStar"></i></button>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
@@ -96,6 +96,43 @@
     <div class="modal-footer">
       <button type="button" class="btn btn-outline-secondary btn-rounded" (click)="modal.dismiss(false)">Cancel</button>
       <button type="button" ngbAutofocus class="btn btn-danger btn-rounded" (click)="modal.close(true)">Ok</button>
+    </div>
+</ng-template>
+
+<ng-template #CreateModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-title">Create Deparment</h4>
+      <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="createDepartmentForm">
+        <div class="form-group">
+            <label for="idCountry">idCountry</label>
+            <input id="idCountry" class="form-control form-control-rounded" formControlName="idCountry" type="text">
+        </div>
+        <div class="form-group">
+            <label for="description">description</label>
+            <input id="description" class="form-control form-control-rounded" formControlName="description" type="text">
+        </div>
+        <div class="form-group">
+            <label for="createdDate">createdDate</label>
+            <input id="createdDate" class="form-control form-control-rounded" formControlName="createdDate" type="text">
+        </div>
+        <div class="form-group">
+            <label for="idUserCreation">idUserCreation</label>
+            <input id="idUserCreation" class="form-control form-control-rounded" formControlName="idUserCreation" type="text">
+        </div>
+        <div class="form-group">
+            <label for="condition">condition</label>
+            <input id="condition" class="form-control form-control-rounded" formControlName="condition" type="text">
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary btn-rounded" (click)="modal.dismiss(false)">Cancel</button>
+      <button type="button" ngbAutofocus class="btn btn-primary btn-rounded" (click)="modal.close(true)">Save</button>
     </div>
 </ng-template>
 

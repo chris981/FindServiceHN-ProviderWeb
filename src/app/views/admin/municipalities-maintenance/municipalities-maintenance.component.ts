@@ -17,6 +17,7 @@ export class MunicipalitiesMaintenanceComponent implements OnInit {
   municipalityFiltered: Array<MunicipalitiesModel>;
   selectedMunicipality: MunicipalitiesModel;
   editMunicipalityForm: FormGroup;
+  createMunicipalityForm: FormGroup;
 
   constructor(
     private municipalityService: MunicipalitiesService,
@@ -81,6 +82,40 @@ export class MunicipalitiesMaintenanceComponent implements OnInit {
         }
       });
   }
+
+  CreateMunicipality(content){
+    this.createMunicipalityForm = this._formBuilder.group({
+      idCountry: null,
+      idDepartment: null,
+      description: null,
+      creationDate: null,
+      idUserCreation: null,
+      idStatus: null,
+    });
+
+    let municipalityToCreate = {... this.selectedMunicipality}
+
+    this.modalService.open(content, 
+      { 
+        ariaLabelledBy: 'modal-basic-title',
+        centered: true
+      }).result.then((result) => {
+        if(result){
+          municipalityToCreate.idDepartment = this.createMunicipalityForm.value?.idDepartment;
+          municipalityToCreate.idCountry = this.createMunicipalityForm.value?.idCountry;
+          municipalityToCreate.description = this.createMunicipalityForm.value?.description;
+          municipalityToCreate.creationDate = this.createMunicipalityForm.value?.creationDate;
+          municipalityToCreate.idUserCreation = this.createMunicipalityForm.value?.idUserCreation;
+          municipalityToCreate.idStatus = this.createMunicipalityForm.value?.idStatus;
+          this.municipalityService.CreateMunicipalityt(municipalityToCreate).subscribe({next: (resp) => {
+            if(resp){
+              this.updateMunicipality();
+            }
+          }})
+        }
+      });  
+  } 
+
 
   EditMunicipality(content, idMunicipality: number){
     this.selectedMunicipality = this.municipality.find(s => s.idMunicipality == idMunicipality);

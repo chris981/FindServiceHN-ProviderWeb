@@ -17,6 +17,7 @@ export class DepartmentsMaintenanceComponent implements OnInit {
   departmentsFiltered: Array<DepartmentesModel>;
   selectedDepartment: DepartmentesModel;
   editDepartmentForm: FormGroup;
+  createDepartmentForm: FormGroup;
 
   constructor(
     private deparmentsService: DepartmentsService,
@@ -81,6 +82,37 @@ export class DepartmentsMaintenanceComponent implements OnInit {
         }
       });
   }
+
+  CreateDepartment(content){
+    this.createDepartmentForm = this._formBuilder.group({
+      idCountry: null,
+      description: null,
+      createdDate: null,
+      idUserCreation: null,
+      condition: null,
+    });
+
+    let departmentToCreate = {... this.selectedDepartment}
+
+    this.modalService.open(content, 
+      { 
+        ariaLabelledBy: 'modal-basic-title',
+        centered: true
+      }).result.then((result) => {
+        if(result){
+          departmentToCreate.idCountry = this.createDepartmentForm.value?.idCountry;
+          departmentToCreate.description = this.createDepartmentForm.value?.description;
+          departmentToCreate.createdDate = this.createDepartmentForm.value?.createdDate;
+          departmentToCreate.idUserCreation = this.createDepartmentForm.value?.idUserCreation;
+          departmentToCreate.condition = this.createDepartmentForm.value?.condition;
+          this.deparmentsService.CreateDepartment(departmentToCreate).subscribe({next: (resp) => {
+            if(resp){
+              this.updateDepartment();
+            }
+          }})
+        }
+      });  
+  } 
 
   EditDepartment(content, idDepartment: number){
     this.selectedDepartment = this.department.find(s => s.idDepartment == idDepartment);
