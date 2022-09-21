@@ -16,6 +16,11 @@ export class OrderSatisfactionService {
     return this.http.get<Array<OrdersSatisfactionModel>>(`${this.baseUrl}/api/OrderSatisfaction/GetOrderSatisfaction`);
   }
 
+
+  CreateOrderSatisfaction(category: OrdersSatisfactionModel): Observable<OrdersSatisfactionModel> {
+    return this.http.post<OrdersSatisfactionModel>(`${this.baseUrl}/api/OrderSatisfaction/Create`, category);
+  }
+
   DeleteOrderSatisfaction(id: number): Observable<boolean> {
     return this.http.delete<boolean>(`${this.baseUrl}/api/OrderSatisfaction/Remove/${id}`);
   }

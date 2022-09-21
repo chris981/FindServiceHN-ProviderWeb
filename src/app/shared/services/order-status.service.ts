@@ -16,6 +16,10 @@ export class OrderStatusService {
     return this.http.get<Array<OrderStatus>>(`${this.baseUrl}/api/OrderStatus/GetOrderStatus`);
   }
 
+  CreateOrderStatus(category: OrderStatus): Observable<OrderStatus> {
+    return this.http.post<OrderStatus>(`${this.baseUrl}/api/OrderStatus/Create`, category);
+  }
+
   DeleteOrderStatus(id: number): Observable<boolean> {
     return this.http.delete<boolean>(`${this.baseUrl}/api/OrderStatus/Remove/${id}`);
   }

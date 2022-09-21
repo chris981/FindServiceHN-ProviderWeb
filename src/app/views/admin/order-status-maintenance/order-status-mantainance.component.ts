@@ -17,6 +17,7 @@ export class OrderStatusMantainanceComponent implements OnInit {
   orderStatusFiltered: Array<OrderStatus>;
   selectedStatus: OrderStatus;
   editStatusForm: FormGroup;
+  createOrderStatusForm: FormGroup;
 
   constructor(
     private OrderStatusService: OrderStatusService,
@@ -80,6 +81,30 @@ export class OrderStatusMantainanceComponent implements OnInit {
           }})
         }
       });
+  }
+
+  CreateOrderStatus(content){
+
+    this.createOrderStatusForm = this._formBuilder.group({
+      idStatus: null,
+      description: null 
+    });
+    let orderStatusToCreate = {...this.selectedStatus}
+    this.modalService.open(content, 
+      {
+        ariaLabelledBy: 'modal-basic-title',
+        centered: true
+      }).result.then((result) => {
+        if(result){
+          orderStatusToCreate.idStatus = this.createOrderStatusForm.value?.idStatus;
+          orderStatusToCreate.description = this.createOrderStatusForm.value?.description;
+          this.OrderStatusService.CreateOrderStatus(orderStatusToCreate).subscribe({next: (resp) => {
+            if(resp){
+              this.updateOrderStatus();
+            }
+          }})
+        }
+      })
   }
 
   EditOrderStatus(content, StatusId: number){
