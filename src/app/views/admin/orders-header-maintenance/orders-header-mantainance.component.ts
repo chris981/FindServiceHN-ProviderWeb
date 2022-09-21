@@ -17,6 +17,7 @@ export class OrderHeaderMantainanceComponent implements OnInit {
   orderHeaderFiltered: Array<OrdersHeaderModel>;
   selectedHeader: OrdersHeaderModel;
   editHeaderForm: FormGroup;
+  createOrderHeaderForm: FormGroup;
 
   constructor(
     private OrderHeaderService: OrderHeaderService,
@@ -80,6 +81,50 @@ export class OrderHeaderMantainanceComponent implements OnInit {
           }})
         }
       });
+  }
+
+  CreateOrderHeader(content){
+
+    this.createOrderHeaderForm = this._formBuilder.group({
+      idCustomer: null,
+      idProvider: null,
+      idClientAddress: null,
+      description: null,
+      idCategory: null,
+      idSubCategory: null,
+      creationDate: null,
+      executionDate: null,
+      closingDate: null,
+      idStatus: null,
+      satisfactionLevel: null,
+      customerObservation: null
+    });
+    let orderHeaderToCreate = {...this.selectedHeader}
+    this.modalService.open(content, 
+      {
+        ariaLabelledBy: 'modal-basic-title',
+        centered: true
+      }).result.then((result) => {
+        if(result){
+          orderHeaderToCreate.idCustomer = this.createOrderHeaderForm.value?.idCustomer;
+          orderHeaderToCreate.idProvider = this.createOrderHeaderForm.value?.idProvider;
+          orderHeaderToCreate.idClientAddress = this.createOrderHeaderForm.value?.idClientAddress;
+          orderHeaderToCreate.description = this.createOrderHeaderForm.value?.description;
+          orderHeaderToCreate.idCategory = this.createOrderHeaderForm.value?.idCategory;
+          orderHeaderToCreate.idSubCategory = this.createOrderHeaderForm.value?.idSubCategory;
+          orderHeaderToCreate.creationDate = this.createOrderHeaderForm.value?.creationDate;
+          orderHeaderToCreate.executionDate = this.createOrderHeaderForm.value?.executionDate;
+          orderHeaderToCreate.closingDate = this.createOrderHeaderForm.value?.closingDate;
+          orderHeaderToCreate.idStatus = this.createOrderHeaderForm.value?.idStatus;
+          orderHeaderToCreate.satisfactionLevel = this.createOrderHeaderForm.value?.satisfactionLevel;
+          orderHeaderToCreate.customerObservation = this.createOrderHeaderForm.value?.customerObservation;
+          this.OrderHeaderService.CreateOrderHeader(orderHeaderToCreate).subscribe({next: (resp) => {
+            if(resp){
+              this.updateOrderHeader();
+            }
+          }})
+        }
+      })
   }
 
   EditOrderHeader(content, HeaderId: number){

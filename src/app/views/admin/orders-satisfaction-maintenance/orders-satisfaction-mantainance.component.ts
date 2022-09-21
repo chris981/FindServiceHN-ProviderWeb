@@ -17,6 +17,7 @@ export class OrderSatisfactionMantainanceComponent implements OnInit {
   orderSatisfactionFiltered: Array<OrdersSatisfactionModel>;
   selectedSatisfaction: OrdersSatisfactionModel;
   editSatisfactionForm: FormGroup;
+  createOrderSatisfactionForm: FormGroup;
 
   constructor(
     private OrderSatisfactionService: OrderSatisfactionService,
@@ -82,6 +83,29 @@ export class OrderSatisfactionMantainanceComponent implements OnInit {
       });
   }
 
+  CreateOrderSatisfaction(content){
+
+    this.createOrderSatisfactionForm = this._formBuilder.group({
+      valorization: null,
+      description: null,
+    });
+    let orderSatisfactionToCreate = {...this.selectedSatisfaction}
+    this.modalService.open(content, 
+      {
+        ariaLabelledBy: 'modal-basic-title',
+        centered: true
+      }).result.then((result) => {
+        if(result){
+          orderSatisfactionToCreate.valorization = this.createOrderSatisfactionForm.value?.valorization;
+          orderSatisfactionToCreate.description = this.createOrderSatisfactionForm.value?.description;
+          this.OrderSatisfactionService.CreateOrderSatisfaction(orderSatisfactionToCreate).subscribe({next: (resp) => {
+            if(resp){
+              this.updateOrderSatisfaction();
+            }
+          }})
+        }
+      })
+  }
   EditOrderSatisfaction(content, SatisfactionId: number){
     this.selectedSatisfaction = this.orderSatisfaction.find(s => s.idSatisfaction == SatisfactionId);
     this.editSatisfactionForm = this._formBuilder.group({

@@ -16,6 +16,10 @@ export class OrderDetailService {
     return this.http.get<Array<OrdersDetailModel>>(`${this.baseUrl}/api/OrderDetail/GetOrderDetail`);
   }
 
+  CreateOrderDetail(category: OrdersDetailModel): Observable<OrdersDetailModel> {
+    return this.http.post<OrdersDetailModel>(`${this.baseUrl}/api/OrderDetail/Create`, category);
+  }
+
   DeleteOrderDetail(id: number): Observable<boolean> {
     return this.http.delete<boolean>(`${this.baseUrl}/api/OrderDetail/Remove/${id}`);
   }

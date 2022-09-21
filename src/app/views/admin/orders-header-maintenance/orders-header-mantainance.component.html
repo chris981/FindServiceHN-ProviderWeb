@@ -14,7 +14,7 @@
             <div>
                 <div class="row">
                     <div class="col-1">
-                        <button type="button" class="btn btn-success btn-rounded"><i title="Add Status" class="i-Add-UserStar"></i></button>
+                        <button  (click)="CreateOrderHeader(CreateModal)" type="button" class="btn btn-success btn-rounded"><i title="Add Status" class="i-Add-UserStar"></i></button>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
@@ -109,6 +109,71 @@
         </div>
     </div>
 </div>
+
+<ng-template #CreateModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-title">Create Order Header</h4>
+      <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="createOrderHeaderForm">
+        <div class="form-group">
+            <label for="idCustomer">idCustomer</label>
+            <input id="idCustomer" class="form-control form-control-rounded" formControlName="idCustomer" type="text">
+        </div>
+        <div class="form-group">
+            <label for="idProvider">idProvider</label>
+            <input id="idProvider" class="form-control form-control-rounded" formControlName="idProvider" type="text">
+        </div>
+        <div class="form-group">
+            <label for="idClientAddress">idClientAddress</label>
+            <input id="idClientAddress" class="form-control form-control-rounded" formControlName="idClientAddress" type="text">
+        </div>
+        <div class="form-group">
+            <label for="description">description</label>
+            <input id="description" class="form-control form-control-rounded" formControlName="description" type="text">
+        </div>
+        <div class="form-group">
+            <label for="idCategory">idCategory</label>
+            <input id="idCategory" class="form-control form-control-rounded" formControlName="idCategory" type="text">
+        </div>
+        <div class="form-group">
+            <label for="idSubCategory">idSubCategory</label>
+            <input id="idSubCategory" class="form-control form-control-rounded" formControlName="idSubCategory" type="text">
+        </div>
+        <div class="form-group">
+            <label for="creationDate">creationDate</label>
+            <input id="creationDate" class="form-control form-control-rounded" formControlName="creationDate" type="text">
+        </div>
+        <div class="form-group">
+            <label for="executionDate">executionDate</label>
+            <input id="executionDate" class="form-control form-control-rounded" formControlName="executionDate" type="text">
+        </div>
+        <div class="form-group">
+            <label for="closingDate">closingDate</label>
+            <input id="closingDate" class="form-control form-control-rounded" formControlName="closingDate" type="text">
+        </div>
+        <div class="form-group">
+            <label for="idStatus">idStatus</label>
+            <input id="idStatus" class="form-control form-control-rounded" formControlName="idStatus" type="text">
+        </div>
+        <div class="form-group">
+            <label for="satisfactionLevel">satisfactionLevel</label>
+            <input id="satisfactionLevel" class="form-control form-control-rounded" formControlName="satisfactionLevel" type="text">
+        </div>
+        <div class="form-group">
+            <label for="customerObservation">customerObservation</label>
+            <input id="customerObservation" class="form-control form-control-rounded" formControlName="customerObservation" type="text">
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary btn-rounded" (click)="modal.dismiss(false)">Cancel</button>
+      <button type="button" ngbAutofocus class="btn btn-primary btn-rounded" (click)="modal.close(true)">Save</button>
+    </div>
+</ng-template>
 
 <ng-template #modalConfirm let-modal>
     <div class="modal-header">

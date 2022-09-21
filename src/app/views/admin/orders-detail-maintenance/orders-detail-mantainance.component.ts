@@ -17,6 +17,7 @@ export class OrderDetailMantainanceComponent implements OnInit {
   orderDetailFiltered: Array<OrdersDetailModel>;
   selectedDetail: OrdersDetailModel;
   editDetailForm: FormGroup;
+  createOrderDetailForm: FormGroup;
 
   constructor(
     private OrderDetailService: OrderDetailService,
@@ -80,6 +81,40 @@ export class OrderDetailMantainanceComponent implements OnInit {
           }})
         }
       });
+  }
+
+  CreateOrderDetail(content){
+
+    this.createOrderDetailForm = this._formBuilder.group({
+      idCustomer: null,
+      idProvider: null,
+      line: null,
+      idProduct: null,
+      price: null,
+      amount: null,
+      idStatus: null
+    });
+    let orderDetailToCreate = {...this.selectedDetail}
+    this.modalService.open(content, 
+      {
+        ariaLabelledBy: 'modal-basic-title',
+        centered: true
+      }).result.then((result) => {
+        if(result){
+          orderDetailToCreate.idCustomer = this.createOrderDetailForm.value?.idCustomer;
+          orderDetailToCreate.idProvider = this.createOrderDetailForm.value?.idProvider;
+          orderDetailToCreate.line = this.createOrderDetailForm.value?.line;
+          orderDetailToCreate.idProduct = this.createOrderDetailForm.value?.idProduct;
+          orderDetailToCreate.price = this.createOrderDetailForm.value?.price;
+          orderDetailToCreate.amount = this.createOrderDetailForm.value?.amount;
+          orderDetailToCreate.idStatus = this.createOrderDetailForm.value?.idStatus;
+          this.OrderDetailService.CreateOrderDetail(orderDetailToCreate).subscribe({next: (resp) => {
+            if(resp){
+              this.updateOrderDetail();
+            }
+          }})
+        }
+      })
   }
 
   EditOrderDetail(content, DetailId: number){

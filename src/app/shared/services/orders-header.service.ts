@@ -16,6 +16,10 @@ export class OrderHeaderService {
     return this.http.get<Array<OrdersHeaderModel>>(`${this.baseUrl}/api/OrderHeader/GetOrderHeader`);
   }
 
+  CreateOrderHeader(category: OrdersHeaderModel): Observable<OrdersHeaderModel> {
+    return this.http.post<OrdersHeaderModel>(`${this.baseUrl}/api/OrderHeader/Create`, category);
+  }
+
   DeleteOrderHeader(id: number): Observable<boolean> {
     return this.http.delete<boolean>(`${this.baseUrl}/api/OrderHeader/Remove/${id}`);
   }
