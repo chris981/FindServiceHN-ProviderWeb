@@ -1,3 +1,4 @@
+
 <div class="">
     <div class="breadcrumb">
         <h1>Admin</h1>
@@ -79,7 +80,38 @@
                   <button type="button" ngbAutofocus class="btn btn-danger btn-rounded" (click)="modal.close(true)">Ok</button>
                 </div>
             </ng-template>
-            
+            <ng-template #CreateModal let-modal>
+                <div class="modal-header">
+                  <h4 class="modal-title" id="modal-title">Create Category</h4>
+                  <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form [formGroup]="createCategoryForm">
+                    <div class="form-group">
+                        <label for="name">name</label>
+                        <input id="name" class="form-control form-control-rounded" formControlName="name" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="Amounth">Amounth</label>
+                        <input id="Amounth" class="form-control form-control-rounded" formControlName="Amounth" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="CreationDate">CreationDate</label>
+                        <input id="CreationDate" class="form-control form-control-rounded" formControlName="CreationDate" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="idStatus">idStatus</label>
+                        <input id="idStatus" class="form-control form-control-rounded" formControlName="idStatus" type="text">
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-secondary btn-rounded" (click)="modal.dismiss(false)">Cancel</button>
+                  <button type="button" ngbAutofocus class="btn btn-primary btn-rounded" (click)="modal.close(true)">Save</button>
+                </div>
+            </ng-template>
             <ng-template #EditModal let-modal>
                 <div class="modal-header">
                   <h4 class="modal-title" id="modal-title">Update Category</h4>
@@ -90,25 +122,20 @@
                 <div class="modal-body">
                   <form [formGroup]="editCategoryForm">
                     <div class="form-group">
-                        <label for="Description">description</label>
-                        <input id="Description" class="form-control form-control-rounded" formControlName="Description" type="text">
-                    </div>
-            
-                    <div class="form-group">
-                        <label for="Creationdate">Creationdate</label>
-                        <input id="Creationdate" class="form-control form-control-rounded" formControlName="Creationdate" type="text">
+                        <label for="name">name</label>
+                        <input id="name" class="form-control form-control-rounded" formControlName="name" type="text">
                     </div>
                     <div class="form-group">
-                        <label for="IdUserCreation">IdUserCreation</label>
-                        <input id="IdUserCreation" class="form-control form-control-rounded" formControlName="IdUserCreation" type="text">
+                        <label for="Amounth">Amounth</label>
+                        <input id="Amounth" class="form-control form-control-rounded" formControlName="Amounth" type="text">
                     </div>
                     <div class="form-group">
-                        <label for="IdStatus">IdStatus</label>
-                        <input id="IdStatus" class="form-control form-control-rounded" formControlName="IdStatus" type="text">
+                        <label for="CreationDate">CreationDate</label>
+                        <input id="CreationDate" class="form-control form-control-rounded" formControlName="CreationDate" type="text">
                     </div>
                     <div class="form-group">
-                        <label for="Image">Image</label>
-                        <input id="Image" class="form-control form-control-rounded" formControlName="Image" type="text">
+                        <label for="idStatus">idStatus</label>
+                        <input id="idStatus" class="form-control form-control-rounded" formControlName="idStatus" type="text">
                     </div>
             
                   </form>
