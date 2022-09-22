@@ -16,7 +16,7 @@ export class ProviderMantainanceComponent implements OnInit {
   ProvidersFiltered: Array<ProvidersModel>;
   selectedProviders: ProvidersModel;
   editProvidersForm: FormGroup;
-
+  createProvidersForm: FormGroup;
   constructor(
     private providersService: ProvidersService,
     private modalService: NgbModal, 
@@ -80,6 +80,76 @@ export class ProviderMantainanceComponent implements OnInit {
         }
       });
   }
+  CreateProvider(content){
+
+    this.createProvidersForm = this._formBuilder.group({
+      email: null,
+    password: null,
+    rtn: null,
+    company: null,
+    identificationCard: null,
+    name: null,
+    lastName: null,
+    country: null,
+    department: null,
+    municipality: null,
+    phone: null,
+    idCategory: null,
+    idSubcategory: null,
+    indusCai: null,
+    indDelivery: null,
+    attentionFirst: null,
+    attentionlast: null,
+    idStatus: null,
+    profilePicture: null,
+    profilePrincipal: null,
+    url: null,
+    qtyWorks: null,
+    keyValidation: null,
+    userType: null
+    });
+    let providersToCreate = {...this.selectedProviders}
+    this.modalService.open(content, 
+      {
+        ariaLabelledBy: 'modal-basic-title',
+        centered: true
+      }).result.then((result) => {
+        if(result){
+          providersToCreate.email = this.createProvidersForm.value?.email;
+          providersToCreate.password = this.createProvidersForm.value?.password;
+          providersToCreate.rtn = this.createProvidersForm.value?.rtn;
+          providersToCreate.company = this.createProvidersForm.value?.company;
+          providersToCreate.identificationCard = this.createProvidersForm.value?.identificationCard;
+          providersToCreate.name = this.createProvidersForm.value?.name;
+          providersToCreate.lastName = this.createProvidersForm.value?.lastName;
+          providersToCreate.country = this.createProvidersForm.value?.country;
+          providersToCreate.department = this.createProvidersForm.value?.department;
+          providersToCreate.municipality = this.createProvidersForm.value?.municipality;
+          providersToCreate.phone = this.createProvidersForm.value?.phone;
+          providersToCreate.idCategory = this.createProvidersForm.value?.idcategory;
+          providersToCreate.idSubcategory = this.createProvidersForm.value?.idsubcategory;
+          providersToCreate.indusCai = this.createProvidersForm.value?.indusCai;
+          providersToCreate.indDelivery = this.createProvidersForm.value?.indDelivery;
+          providersToCreate.attentionFirst = this.createProvidersForm.value?.attentionFirst;
+          providersToCreate.attentionlast = this.createProvidersForm.value?.attentionlast;
+          providersToCreate.idStatus = this.createProvidersForm.value?.idStatus;
+          providersToCreate.profilePicture = this.createProvidersForm.value?.profilePicture;
+          providersToCreate.profilePrincipal = this.createProvidersForm.value?.profilePrincipal;
+          providersToCreate.url = this.createProvidersForm.value?.url;
+          providersToCreate.qtyWorks = this.createProvidersForm.value?.qtyWorks;
+          providersToCreate.keyValidation = this.createProvidersForm.value?.keyValidation;
+          providersToCreate.userType = this.createProvidersForm.value?.userType;
+          
+          
+          this.providersService.CreateProviders(providersToCreate).subscribe({next: (resp) => {
+            if(resp){
+              this.UpdateProviders();
+            }
+          }})
+        }
+      })
+  }
+
   EditProviders(content, idProvider: number){
     this.selectedProviders = this.Providers.find(s => s.idProvider == idProvider);
     this.editProvidersForm = this._formBuilder.group({
