@@ -16,6 +16,7 @@ export class ProviderPlansJobsMantainanceComponent implements OnInit {
   ProviderPlanJobsFiltered: Array<ProviderPlansJobsModel>;
   selectedProviderPlanJobs: ProviderPlansJobsModel;
   editProviderPlanJobsForm: FormGroup;
+  createProviderPlanJobsForm: FormGroup;
 
   constructor(
     private providerPlanJobService: ProvidersPlanJobsService,
@@ -80,6 +81,35 @@ export class ProviderPlansJobsMantainanceComponent implements OnInit {
         }
       });
   }
+
+  CreateProvidersPlanJobs(content){
+
+    this.createProviderPlanJobsForm = this._formBuilder.group({
+      description: null,
+      name: null,
+      amount: null,
+      creationDate: null,
+    });
+    let providerPlanJobsToCreate = {...this.selectedProviderPlanJobs}
+    this.modalService.open(content, 
+      {
+        ariaLabelledBy: 'modal-basic-title',
+        centered: true
+      }).result.then((result) => {
+        if(result){
+          providerPlanJobsToCreate.name = this.createProviderPlanJobsForm.value?.name;
+          providerPlanJobsToCreate.amount = this.createProviderPlanJobsForm.value?.amount;
+          providerPlanJobsToCreate.creationDate = this.createProviderPlanJobsForm.value?.creationDate;
+         
+          this.providerPlanJobService.CreateProvidersPlanJobs(providerPlanJobsToCreate).subscribe({next: (resp) => {
+            if(resp){
+              this.UpdateProviderPlanJobs();
+            }
+          }})
+        }
+      })
+  }
+
   EditProvidePlanJobs(content, idQtyWorks: number){
     this.selectedProviderPlanJobs = this.ProviderPlanJobs.find(s => s.idQtyWorks == idQtyWorks);
     this.editProviderPlanJobsForm = this._formBuilder.group({
@@ -112,3 +142,4 @@ export class ProviderPlansJobsMantainanceComponent implements OnInit {
   }
 
 }
+
