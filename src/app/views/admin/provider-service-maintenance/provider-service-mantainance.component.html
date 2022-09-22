@@ -2,7 +2,7 @@
     <div class="breadcrumb">
         <h1>Admin</h1>
         <ul>
-            <li><a>Provider Mantainance</a></li>
+            <li><a>Providers Service Mantainance</a></li>
         </ul>
     </div>
 
@@ -10,7 +10,7 @@
 
     <div class="card mb-4">
         <div class="card-body">
-            <h5 class="card-title">Provider List</h5>
+            <h5 class="card-title">Provider Service List</h5>
             <div>
                 <div class="row">
                     <div class="col-1">
@@ -27,134 +27,59 @@
                             <ngx-datatable style="height: 500px; box-shadow: none" class="material fullscreen"
                                 [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="60"
                                 [scrollbarH]="false" [scrollbarV]="true" [rows]="">
-                                <ngx-datatable-column name="idProvider" [minWidth]="40" [maxWidth]="200">
+                                <ngx-datatable-column name="idProviderService" [minWidth]="40" [maxWidth]="200">
                                     <ng-template ngx-datatable-header-template>
-                                        idProvider
+                                        idProviderService
                                     </ng-template>
                                 </ngx-datatable-column>
-                                <ngx-datatable-column name="email" [minWidth]="40" [maxWidth]="200">
+                                <ngx-datatable-column name="idProduct" [minWidth]="40" [maxWidth]="200">
                                     <ng-template ngx-datatable-header-template>
-                                        email
+                                        idProduct
                                     </ng-template>
                                 </ngx-datatable-column>
-                                <ngx-datatable-column name="password" [minWidth]="40" [maxWidth]="200">
+                                <ngx-datatable-column name="idServiceType" [minWidth]="40" [maxWidth]="200">
                                     <ng-template ngx-datatable-header-template>
-                                        password
+                                        idServiceType
                                     </ng-template>
                                 </ngx-datatable-column>
-                                <ngx-datatable-column name="rtn" [minWidth]="40" [maxWidth]="200">
+                                <ngx-datatable-column name="typeService" [minWidth]="40" [maxWidth]="200">
                                     <ng-template ngx-datatable-header-template>
-                                        rtn
+                                        typeService
                                     </ng-template>
                                 </ngx-datatable-column>
-                                <ngx-datatable-column name="company" [minWidth]="40" [maxWidth]="200">
+                                <ngx-datatable-column name="description" [minWidth]="40" [maxWidth]="200">
                                     <ng-template ngx-datatable-header-template>
-                                        company
+                                        description
                                     </ng-template>
                                 </ngx-datatable-column>
-                                <ngx-datatable-column name="identificationCard" [minWidth]="40" [maxWidth]="200">
+                                <ngx-datatable-column name="currency" [minWidth]="40" [maxWidth]="200">
                                     <ng-template ngx-datatable-header-template>
-                                        identificationCard
+                                        currency
                                     </ng-template>
                                 </ngx-datatable-column>
-                                <ngx-datatable-column name="name" [minWidth]="40" [maxWidth]="200">
+                                <ngx-datatable-column name="price" [minWidth]="40" [maxWidth]="200">
                                     <ng-template ngx-datatable-header-template>
-                                        name
+                                        price
                                     </ng-template>
                                 </ngx-datatable-column>
-                                <ngx-datatable-column name="lastName" [minWidth]="40" [maxWidth]="200">
+                                <ngx-datatable-column name="shipping" [minWidth]="40" [maxWidth]="200">
                                     <ng-template ngx-datatable-header-template>
-                                        lastName
+                                        shipping
                                     </ng-template>
                                 </ngx-datatable-column>
-                                <ngx-datatable-column name="country" [minWidth]="40" [maxWidth]="200">
+                                <ngx-datatable-column name="productImage" [minWidth]="40" [maxWidth]="200">
                                     <ng-template ngx-datatable-header-template>
-                                        country
+                                        productImage
                                     </ng-template>
                                 </ngx-datatable-column>
-                                <ngx-datatable-column name="department" [minWidth]="40" [maxWidth]="200">
+                                <ngx-datatable-column name="idStatus" [minWidth]="40" [maxWidth]="200">
                                     <ng-template ngx-datatable-header-template>
-                                        department
+                                        idStatus
                                     </ng-template>
                                 </ngx-datatable-column>
-                                <ngx-datatable-column name="municipality" [minWidth]="40" [maxWidth]="200">
+                                <ngx-datatable-column name="ProviderService" [minWidth]="60" [maxWidth]="200">
                                     <ng-template ngx-datatable-header-template>
-                                        municipality
-                                    </ng-template>
-                                </ngx-datatable-column>
-                                <ngx-datatable-column name="phone" [minWidth]="40" [maxWidth]="200">
-                                    <ng-template ngx-datatable-header-template>
-                                        phone
-                                    </ng-template>
-                                </ngx-datatable-column>
-                                <ngx-datatable-column name="idCategory" [minWidth]="40" [maxWidth]="200">
-                                    <ng-template ngx-datatable-header-template>
-                                        idCategory
-                                    </ng-template>
-                                </ngx-datatable-column>
-                                <ngx-datatable-column name="idSubcategory" [minWidth]="40" [maxWidth]="200">
-                                    <ng-template ngx-datatable-header-template>
-                                        idSubcategory
-                                    </ng-template>
-                                </ngx-datatable-column>
-                                <ngx-datatable-column name="indusCai" [minWidth]="40" [maxWidth]="200">
-                                    <ng-template ngx-datatable-header-template>
-                                        indusCai
-                                    </ng-template>
-                                </ngx-datatable-column>
-                                <ngx-datatable-column name="indDelivery" [minWidth]="40" [maxWidth]="200">
-                                    <ng-template ngx-datatable-header-template>
-                                        indDelivery
-                                    </ng-template>
-                                </ngx-datatable-column>
-                                <ngx-datatable-column name="attentionFirst" [minWidth]="40" [maxWidth]="200">
-                                    <ng-template ngx-datatable-header-template>
-                                        attentionFirst
-                                    </ng-template>
-                                </ngx-datatable-column>
-                                <ngx-datatable-column name="attentionlast" [minWidth]="40" [maxWidth]="200">
-                                    <ng-template ngx-datatable-header-template>
-                                        attentionlast
-                                    </ng-template>
-                                </ngx-datatable-column>
-                                <ngx-datatable-column name="profilePicture" [minWidth]="40" [maxWidth]="200">
-                                    <ng-template ngx-datatable-header-template>
-                                        profilePicture
-                                    </ng-template>
-                                </ngx-datatable-column>
-                                <ngx-datatable-column name="profilePrincipal" [minWidth]="40" [maxWidth]="200">
-                                    <ng-template ngx-datatable-header-template>
-                                        profilePrincipal
-                                    </ng-template>
-                                </ngx-datatable-column>
-                                <ngx-datatable-column name="IdStatus" [minWidth]="40" [maxWidth]="200">
-                                    <ng-template ngx-datatable-header-template>
-                                        IdStatus
-                                    </ng-template>
-                                </ngx-datatable-column>
-                                <ngx-datatable-column name="url" [minWidth]="40" [maxWidth]="200">
-                                    <ng-template ngx-datatable-header-template>
-                                        url
-                                    </ng-template>
-                                </ngx-datatable-column>
-                                <ngx-datatable-column name="qtyWorks" [minWidth]="40" [maxWidth]="200">
-                                    <ng-template ngx-datatable-header-template>
-                                        qtyWorks
-                                    </ng-template>
-                                </ngx-datatable-column>
-                                <ngx-datatable-column name="keyValidation" [minWidth]="40" [maxWidth]="200">
-                                    <ng-template ngx-datatable-header-template>
-                                        keyValidation
-                                    </ng-template>
-                                </ngx-datatable-column>
-                                <ngx-datatable-column name="userType" [minWidth]="40" [maxWidth]="200">
-                                    <ng-template ngx-datatable-header-template>
-                                        userType
-                                    </ng-template>
-                                </ngx-datatable-column>
-                                <ngx-datatable-column name="Provider" [minWidth]="60" [maxWidth]="200">
-                                    <ng-template ngx-datatable-header-template>
-                                        Options
+                                        option
                                     </ng-template>
                                     <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
                                         <button type="button" class="btn btn-danger btn-rounded m-1"><i title="Remove User" class="i-Remove-User"></i></button>
@@ -169,10 +94,9 @@
         </div>
     </div>
 </div>
-
 <ng-template #modalConfirm let-modal>
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-title">Providers deletion</h4>
+      <h4 class="modal-title" id="modal-title">Category deletion</h4>
       <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -188,7 +112,6 @@
       <button type="button" ngbAutofocus class="btn btn-danger btn-rounded" (click)="modal.close(true)">Ok</button>
     </div>
 </ng-template>
-
 <ng-template #CreateModal let-modal>
     <div class="modal-header">
       <h4 class="modal-title" id="modal-title">Create Category</h4>
@@ -197,105 +120,44 @@
       </button>
     </div>
     <div class="modal-body">
-      <form [formGroup]="createProvidersForm">
+      <form [formGroup]="createProvidersServiceForm">
         <div class="form-group">
-            <label for="email">email</label>
-            <input id="email" class="form-control form-control-rounded" formControlName="email" type="text">
+            <label for="idProduct">idProduct</label>
+            <input id="idProduct" class="form-control form-control-rounded" formControlName="idProduct" type="text">
         </div>
 
         <div class="form-group">
-            <label for="password">password</label>
-            <input id="password" class="form-control form-control-rounded" formControlName="password" type="text">
+            <label for="idServiceType">idServiceType</label>
+            <input id="idServiceType" class="form-control form-control-rounded" formControlName="idServiceType" type="text">
         </div>
         <div class="form-group">
-            <label for="rtn">rtn</label>
-            <input id="rtn" class="form-control form-control-rounded" formControlName="rtn" type="text">
+            <label for="typeService">typeService</label>
+            <input id="typeService" class="form-control form-control-rounded" formControlName="typeService" type="text">
         </div>
         <div class="form-group">
-            <label for="company">company</label>
-            <input id="company" class="form-control form-control-rounded" formControlName="company" type="text">
+            <label for="description">description</label>
+            <input id="description" class="form-control form-control-rounded" formControlName="description" type="text">
         </div>
         <div class="form-group">
-            <label for="identificationCard">identificationCard</label>
-            <input id="identificationCard" class="form-control form-control-rounded" formControlName="identificationCard" type="text">
+            <label for="currency">currency</label>
+            <input id="currency" class="form-control form-control-rounded" formControlName="currency" type="text">
         </div>
         <div class="form-group">
-            <label for="name">name</label>
-            <input id="name" class="form-control form-control-rounded" formControlName="name" type="text">
+            <label for="price">price</label>
+            <input id="price" class="form-control form-control-rounded" formControlName="price" type="text">
         </div>
         <div class="form-group">
-            <label for="lastName">lastName</label>
-            <input id="lastName" class="form-control form-control-rounded" formControlName="lastName" type="text">
+            <label for="shipping">shipping</label>
+            <input id="shipping" class="form-control form-control-rounded" formControlName="shipping" type="text">
         </div>
         <div class="form-group">
-            <label for="country">country</label>
-            <input id="country" class="form-control form-control-rounded" formControlName="country" type="text">
-        </div>
-        <div class="form-group">
-            <label for="department">department</label>
-            <input id="department" class="form-control form-control-rounded" formControlName="department" type="text">
-        </div>
-        <div class="form-group">
-            <label for="municipality">municipality</label>
-            <input id="municipality" class="form-control form-control-rounded" formControlName="municipality" type="text">
-        </div>
-        <div class="form-group">
-            <label for="phone">phone</label>
-            <input id="phone" class="form-control form-control-rounded" formControlName="phone" type="text">
-        </div>
-        <div class="form-group">
-            <label for="idCategory">idCategory</label>
-            <input id="idCategory" class="form-control form-control-rounded" formControlName="idCategory" type="text">
-        </div>
-        <div class="form-group">
-            <label for="idSubcategory">idSubcategory</label>
-            <input id="idSubcategory" class="form-control form-control-rounded" formControlName="idSubcategory" type="text">
-        </div>
-        <div class="form-group">
-            <label for="indusCai">indusCai</label>
-            <input id="indusCai" class="form-control form-control-rounded" formControlName="indusCai" type="text">
-        </div>
-        <div class="form-group">
-            <label for="indDelivery">indDelivery</label>
-            <input id="indDelivery" class="form-control form-control-rounded" formControlName="indDelivery" type="text">
-        </div>
-        <div class="form-group">
-            <label for="attentionFirst">attentionFirst</label>
-            <input id="attentionFirst" class="form-control form-control-rounded" formControlName="attentionFirst" type="text">
-        </div>
-        <div class="form-group">
-            <label for="attentionlast">attentionlast</label>
-            <input id="attentionlast" class="form-control form-control-rounded" formControlName="attentionlast" type="text">
+            <label for="productImage">productImage</label>
+            <input id="productImage" class="form-control form-control-rounded" formControlName="productImage" type="text">
         </div>
         <div class="form-group">
             <label for="idStatus">idStatus</label>
             <input id="idStatus" class="form-control form-control-rounded" formControlName="idStatus" type="text">
         </div>
-        <div class="form-group">
-            <label for="profilePicture">profilePicture</label>
-            <input id="profilePicture" class="form-control form-control-rounded" formControlName="profilePicture" type="text">
-        </div>
-        <div class="form-group">
-            <label for="profilePrincipal">profilePrincipal</label>
-            <input id="profilePrincipal" class="form-control form-control-rounded" formControlName="profilePrincipal" type="text">
-        </div>
-        <div class="form-group">
-            <label for="url">url</label>
-            <input id="url" class="form-control form-control-rounded" formControlName="url" type="text">
-        </div>
-        <div class="form-group">
-            <label for="qtyWorks">qtyWorks</label>
-            <input id="qtyWorks" class="form-control form-control-rounded" formControlName="qtyWorks" type="text">
-        </div>
-        <div class="form-group">
-            <label for="keyValidation">keyValidation</label>
-            <input id="keyValidation" class="form-control form-control-rounded" formControlName="keyValidation" type="text">
-        </div>
-        <div class="form-group">
-            <label for="userType">userType</label>
-            <input id="userType" class="form-control form-control-rounded" formControlName="userType    " type="text">
-        </div>
-
       </form>
     </div>
     <div class="modal-footer">
@@ -303,112 +165,51 @@
       <button type="button" ngbAutofocus class="btn btn-primary btn-rounded" (click)="modal.close(true)">Save</button>
     </div>
 </ng-template>
-
 <ng-template #EditModal let-modal>
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-title">Update Providers</h4>
+      <h4 class="modal-title" id="modal-title">Update Category</h4>
       <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
-      <form [formGroup]="editProvidersForm">
+      <form [formGroup]="editCategoryForm">
         <div class="form-group">
-            <label for="email">email</label>
-            <input id="email" class="form-control form-control-rounded" formControlName="email" type="text">
+            <label for="idProduct">idProduct</label>
+            <input id="idProduct" class="form-control form-control-rounded" formControlName="idProduct" type="text">
         </div>
 
         <div class="form-group">
-            <label for="password">password</label>
-            <input id="password" class="form-control form-control-rounded" formControlName="password" type="text">
+            <label for="idServiceType">idServiceType</label>
+            <input id="idServiceType" class="form-control form-control-rounded" formControlName="idServiceType" type="text">
         </div>
         <div class="form-group">
-            <label for="rtn">rtn</label>
-            <input id="rtn" class="form-control form-control-rounded" formControlName="rtn" type="text">
+            <label for="typeService">typeService</label>
+            <input id="typeService" class="form-control form-control-rounded" formControlName="typeService" type="text">
         </div>
         <div class="form-group">
-            <label for="company">company</label>
-            <input id="company" class="form-control form-control-rounded" formControlName="company" type="text">
+            <label for="description">description</label>
+            <input id="description" class="form-control form-control-rounded" formControlName="description" type="text">
         </div>
         <div class="form-group">
-            <label for="identificationCard">identificationCard</label>
-            <input id="identificationCard" class="form-control form-control-rounded" formControlName="identificationCard" type="text">
+            <label for="currency">currency</label>
+            <input id="currency" class="form-control form-control-rounded" formControlName="currency" type="text">
         </div>
         <div class="form-group">
-            <label for="name">name</label>
-            <input id="name" class="form-control form-control-rounded" formControlName="name" type="text">
+            <label for="price">price</label>
+            <input id="price" class="form-control form-control-rounded" formControlName="price" type="text">
         </div>
         <div class="form-group">
-            <label for="lastName">lastName</label>
-            <input id="lastName" class="form-control form-control-rounded" formControlName="lastName" type="text">
+            <label for="shipping">shipping</label>
+            <input id="shipping" class="form-control form-control-rounded" formControlName="shipping" type="text">
         </div>
         <div class="form-group">
-            <label for="country">country</label>
-            <input id="country" class="form-control form-control-rounded" formControlName="country" type="text">
-        </div>
-        <div class="form-group">
-            <label for="department">department</label>
-            <input id="department" class="form-control form-control-rounded" formControlName="department" type="text">
-        </div>
-        <div class="form-group">
-            <label for="municipality">municipality</label>
-            <input id="municipality" class="form-control form-control-rounded" formControlName="municipality" type="text">
-        </div>
-        <div class="form-group">
-            <label for="phone">phone</label>
-            <input id="phone" class="form-control form-control-rounded" formControlName="phone" type="text">
-        </div>
-        <div class="form-group">
-            <label for="idCategory">idCategory</label>
-            <input id="idCategory" class="form-control form-control-rounded" formControlName="idCategory" type="text">
-        </div>
-        <div class="form-group">
-            <label for="idSubcategory">idSubcategory</label>
-            <input id="idSubcategory" class="form-control form-control-rounded" formControlName="idSubcategory" type="text">
-        </div>
-        <div class="form-group">
-            <label for="indusCai">indusCai</label>
-            <input id="indusCai" class="form-control form-control-rounded" formControlName="indusCai" type="text">
-        </div>
-        <div class="form-group">
-            <label for="indDelivery">indDelivery</label>
-            <input id="indDelivery" class="form-control form-control-rounded" formControlName="indDelivery" type="text">
-        </div>
-        <div class="form-group">
-            <label for="attentionFirst">attentionFirst</label>
-            <input id="attentionFirst" class="form-control form-control-rounded" formControlName="attentionFirst" type="text">
-        </div>
-        <div class="form-group">
-            <label for="attentionlast">attentionlast</label>
-            <input id="attentionlast" class="form-control form-control-rounded" formControlName="attentionlast" type="text">
+            <label for="productImage">productImage</label>
+            <input id="productImage" class="form-control form-control-rounded" formControlName="productImage" type="text">
         </div>
         <div class="form-group">
             <label for="idStatus">idStatus</label>
             <input id="idStatus" class="form-control form-control-rounded" formControlName="idStatus" type="text">
-        </div>
-        <div class="form-group">
-            <label for="profilePicture">profilePicture</label>
-            <input id="profilePicture" class="form-control form-control-rounded" formControlName="profilePicture" type="text">
-        </div>
-        <div class="form-group">
-            <label for="profilePrincipal">profilePrincipal</label>
-            <input id="profilePrincipal" class="form-control form-control-rounded" formControlName="profilePrincipal" type="text">
-        </div>
-        <div class="form-group">
-            <label for="url">url</label>
-            <input id="url" class="form-control form-control-rounded" formControlName="url" type="text">
-        </div>
-        <div class="form-group">
-            <label for="qtyWorks">qtyWorks</label>
-            <input id="qtyWorks" class="form-control form-control-rounded" formControlName="qtyWorks" type="text">
-        </div>
-        <div class="form-group">
-            <label for="keyValidation">keyValidation</label>
-            <input id="keyValidation" class="form-control form-control-rounded" formControlName="keyValidation" type="text">
-        </div>
-        <div class="form-group">
-            <label for="userType">userType</label>
-            <input id="userType" class="form-control form-control-rounded" formControlName="userType    " type="text">
         </div>
 
       </form>
@@ -417,5 +218,3 @@
       <button type="button" class="btn btn-outline-secondary btn-rounded" (click)="modal.dismiss(false)">Cancel</button>
       <button type="button" ngbAutofocus class="btn btn-primary btn-rounded" (click)="modal.close(true)">Save</button>
     </div>
-</ng-template>
-
