@@ -12,14 +12,17 @@ export class ProvidersService {
   constructor(private http: HttpClient) { }
 
   GetAllProviders(): Observable<Array<ProvidersModel>> {
-    return this.http.get<Array<ProvidersModel>>(`${this.baseUrl}/api/DayHour/GetDayHours`);
+    return this.http.get<Array<ProvidersModel>>(`${this.baseUrl}/api/Providers/GetProviders`);
   }
 
+  CreateProviders(providers: ProvidersModel): Observable<ProvidersModel> {
+    return this.http.post<ProvidersModel>(`${this.baseUrl}/api/Providers/Create`, providers);
+  }
   DeleteProviders(id: number): Observable<boolean> {
-    return this.http.delete<boolean>(`${this.baseUrl}/api/DayHour/Remove/${id}`);
+    return this.http.delete<boolean>(`${this.baseUrl}/api/Providers/Remove/${id}`);
   }
 
-  UpdateProviders(category: ProvidersModel): Observable<ProvidersModel> {
-    return this.http.put<ProvidersModel>(`${this.baseUrl}/api/DayHour/Update`, category);
+  UpdateProviders(providers: ProvidersModel): Observable<ProvidersModel> {
+    return this.http.put<ProvidersModel>(`${this.baseUrl}/api/Providers/Update`, providers);
   }
 }
