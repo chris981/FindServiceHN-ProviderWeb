@@ -16,6 +16,7 @@ export class ProvidersEvalComponent implements OnInit {
   ProviderEvalFiltered: Array<ProviderEvalModel>;
   selectedProviderEval: ProviderEvalModel;
   editProviderEvalForm: FormGroup;
+  createProviderEvalForm: FormGroup;
 
   constructor(
     private providersEvalService: ProvidersEvalService,
@@ -80,6 +81,48 @@ export class ProvidersEvalComponent implements OnInit {
         }
       });
   }
+
+  CreateprovidersEval(content){
+
+    this.createProviderEvalForm = this._formBuilder.group({
+      email: null,
+  company: null,
+  name: null,
+  lastName: null,
+  country: null,
+  department: null,
+  phone: null,
+  idCategory: null,
+  observations: null,
+  idStatus: null,
+    });
+    let providerEvalToCreate = {...this.selectedProviderEval}
+    this.modalService.open(content, 
+      {
+        ariaLabelledBy: 'modal-basic-title',
+        centered: true
+      }).result.then((result) => {
+        if(result){
+          providerEvalToCreate.email = this.createProviderEvalForm.value?.email;
+          providerEvalToCreate.company = this.createProviderEvalForm.value?.company;
+          providerEvalToCreate.name = this.createProviderEvalForm.value?.name;
+          providerEvalToCreate.lastName = this.createProviderEvalForm.value?.lastName;
+          providerEvalToCreate.country = this.createProviderEvalForm.value?.country;
+          providerEvalToCreate.department= this.createProviderEvalForm.value?.department;
+          providerEvalToCreate.phone = this.createProviderEvalForm.value?.phone;
+          providerEvalToCreate.idCategory = this.createProviderEvalForm.value?.idCategory;
+          providerEvalToCreate.observations = this.createProviderEvalForm.value?.observations;
+          providerEvalToCreate.idStatus= this.createProviderEvalForm.value?.idStatus;
+
+          this.providersEvalService.CreateProvidersEval(providerEvalToCreate).subscribe({next: (resp) => {
+            if(resp){
+              this.UpdateProviderEval();
+            }
+          }})
+        }
+      })
+  }
+
   EditProviderEval(content, idEval: number){
     this.selectedProviderEval = this.ProviderEval.find(s => s.idEval == idEval);
     this.editProviderEvalForm = this._formBuilder.group({
