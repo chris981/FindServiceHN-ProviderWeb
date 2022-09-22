@@ -1,30 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, UntypedFormControl } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ProvidersServiceModel } from 'src/app/shared/models/providers-service-model';
+import { ProvidersServiceService } from 'src/app/shared/services/providers-service.service';
 import { debounceTime } from 'rxjs/operators';
-import { ProvidersModel } from 'src/app/shared/models/providers-model';
-import { ProvidersService } from 'src/app/shared/services/providers.service';
+
 @Component({
-  selector: 'app-provider-mantainance',
-  templateUrl: './provider-mantainance.component.html',
-  styleUrls: ['./provider-mantainance.component.scss']
+  selector: 'app-provider-service-mantainance',
+  templateUrl: './provider-service-mantainance.component.html',
+  styleUrls: ['./provider-service-mantainance.component.scss']
 })
-export class ProviderMantainanceComponent implements OnInit {
-
+export class ProviderServiceMantainanceComponent implements OnInit {
+   
   searchControl: UntypedFormControl = new UntypedFormControl();
-  Providers: Array<ProvidersModel>;
-  ProvidersFiltered: Array<ProvidersModel>;
-  selectedProviders: ProvidersModel;
-  editProvidersForm: FormGroup;
-  createProvidersForm: FormGroup;
-  constructor(
-    private providersService: ProvidersService,
-    private modalService: NgbModal, 
-    private _formBuilder: FormBuilder) { }
+  ProviderService: Array<ProvidersServiceModel>;
+  ProviderServiceFiltered: Array<ProvidersServiceModel>;
+  selectedProviderService: ProvidersServiceModel;
+  editProviderServiceForm: FormGroup;
+  createProvidersServiceForm: FormGroup;
 
+  constructor(
+    private providerServiceService: ProvidersServiceService,
+    private modalService: NgbModal, 
+    private _formBuilder: FormBuilder
+  ) { }
 
   ngOnInit(): void {
-    this.UpdateProviders();
+    this.UpdateProviderService();
     this.searchControl.valueChanges
     .pipe(debounceTime(200))
     .subscribe(value => {
@@ -32,11 +34,11 @@ export class ProviderMantainanceComponent implements OnInit {
     });
   }
 
-  UpdateProviders(){
-    this.providersService.GetAllProviders().subscribe({
+  UpdateProviderService(){
+    this.providerServiceService.GetAllProviderService().subscribe({
       next: (resp) => {
-        this.Providers =  [...resp];
-        this.Providers = resp;
+        this.ProviderService =  [...resp];
+        this.ProviderService = resp;
       }
     });
   }
@@ -45,15 +47,15 @@ export class ProviderMantainanceComponent implements OnInit {
     if (val) {
       val = val.toLowerCase();
     } else {
-      return this.ProvidersFiltered = [...this.Providers];
+      return this.ProviderServiceFiltered = [...this.ProviderService];
     }
 
-    const columns = Object.keys(this.Providers[0]);
+    const columns = Object.keys(this.ProviderService[0]);
     if (!columns.length) {
       return;
     }
 
-    const rows = this.Providers.filter(function(d) {
+    const rows = this.ProviderService.filter(function(d) {
       for (let i = 0; i <= columns.length; i++) {
         const column = columns[i];
         if (d[column] && d[column].toString().toLowerCase().indexOf(val) > -1) {
@@ -61,128 +63,80 @@ export class ProviderMantainanceComponent implements OnInit {
         }
       }
     });
-    this.ProvidersFiltered = rows;
+    this.ProviderServiceFiltered = rows;
   }
 
-  DeleteProviders(content, idProvider: number){
-    this.selectedProviders= this.Providers.find(s => s.idProvider == idProvider);
+  DeleteProviderService(content, idProviderService: number){
+    this.selectedProviderService= this.ProviderService.find(s => s.idProviderService == idProviderService);
     this.modalService.open(content, 
       { 
         ariaLabelledBy: 'modal-basic-title',
         centered: true
       }).result.then((result) => {
         if(result){
-          this.providersService.DeleteProviders(idProvider).subscribe({next: (resp) => {
+          this.providerServiceService.DeleteProvidersService(idProviderService).subscribe({next: (resp) => {
             if(resp){
-              this.UpdateProviders();
+              this.UpdateProviderService();
             }
           }})
         }
       });
   }
-  CreateProvider(content){
+  CreateProvidersService(content){
 
-    this.createProvidersForm = this._formBuilder.group({
-      email: null,
-    password: null,
-    rtn: null,
-    company: null,
-    identificationCard: null,
-    name: null,
-    lastName: null,
-    country: null,
-    department: null,
-    municipality: null,
-    phone: null,
-    idCategory: null,
-    idSubcategory: null,
-    indusCai: null,
-    indDelivery: null,
-    attentionFirst: null,
-    attentionlast: null,
-    idStatus: null,
-    profilePicture: null,
-    profilePrincipal: null,
-    url: null,
-    qtyWorks: null,
-    keyValidation: null,
-    userType: null
+    this.createProvidersServiceForm = this._formBuilder.group({
+      idProduct: null,
+      idServiceType: null,
+      typeService: null,
+      description: null,
+      currency: null,
+      price: null,
+      shipping: null,
+      productImage: null,
+      idStatus: null 
     });
-    let providersToCreate = {...this.selectedProviders}
+    let providersServiceToCreate = {...this.selectedProviderService}
     this.modalService.open(content, 
       {
         ariaLabelledBy: 'modal-basic-title',
         centered: true
       }).result.then((result) => {
         if(result){
-          providersToCreate.email = this.createProvidersForm.value?.email;
-          providersToCreate.password = this.createProvidersForm.value?.password;
-          providersToCreate.rtn = this.createProvidersForm.value?.rtn;
-          providersToCreate.company = this.createProvidersForm.value?.company;
-          providersToCreate.identificationCard = this.createProvidersForm.value?.identificationCard;
-          providersToCreate.name = this.createProvidersForm.value?.name;
-          providersToCreate.lastName = this.createProvidersForm.value?.lastName;
-          providersToCreate.country = this.createProvidersForm.value?.country;
-          providersToCreate.department = this.createProvidersForm.value?.department;
-          providersToCreate.municipality = this.createProvidersForm.value?.municipality;
-          providersToCreate.phone = this.createProvidersForm.value?.phone;
-          providersToCreate.idCategory = this.createProvidersForm.value?.idcategory;
-          providersToCreate.idSubcategory = this.createProvidersForm.value?.idsubcategory;
-          providersToCreate.indusCai = this.createProvidersForm.value?.indusCai;
-          providersToCreate.indDelivery = this.createProvidersForm.value?.indDelivery;
-          providersToCreate.attentionFirst = this.createProvidersForm.value?.attentionFirst;
-          providersToCreate.attentionlast = this.createProvidersForm.value?.attentionlast;
-          providersToCreate.idStatus = this.createProvidersForm.value?.idStatus;
-          providersToCreate.profilePicture = this.createProvidersForm.value?.profilePicture;
-          providersToCreate.profilePrincipal = this.createProvidersForm.value?.profilePrincipal;
-          providersToCreate.url = this.createProvidersForm.value?.url;
-          providersToCreate.qtyWorks = this.createProvidersForm.value?.qtyWorks;
-          providersToCreate.keyValidation = this.createProvidersForm.value?.keyValidation;
-          providersToCreate.userType = this.createProvidersForm.value?.userType;
-          
-          
-          this.providersService.CreateProviders(providersToCreate).subscribe({next: (resp) => {
+          providersServiceToCreate.idServiceType = this.createProvidersServiceForm.value?.idServiceType;
+          providersServiceToCreate.idProduct = this.createProvidersServiceForm.value?.idProduct;
+          providersServiceToCreate.typeService = this.createProvidersServiceForm.value?.typeService;
+          providersServiceToCreate.description = this.createProvidersServiceForm.value?.description;
+          providersServiceToCreate.currency = this.createProvidersServiceForm.value?.currency;
+          providersServiceToCreate.price = this.createProvidersServiceForm.value?.price;
+          providersServiceToCreate.shipping = this.createProvidersServiceForm.value?.shipping;
+          providersServiceToCreate.productImage = this.createProvidersServiceForm.value?.productImage;
+          providersServiceToCreate.idStatus = this.createProvidersServiceForm.value?.idServiceType;
+          providersServiceToCreate.idServiceType = this.createProvidersServiceForm.value?.idServiceType;
+          this.providerServiceService.CreateProvidersService(providersServiceToCreate).subscribe({next: (resp) => {
             if(resp){
-              this.UpdateProviders();
+              this.UpdateProviderService();
             }
           }})
         }
       })
   }
-
-  EditProviders(content, idProvider: number){
-    this.selectedProviders = this.Providers.find(s => s.idProvider == idProvider);
-    this.editProvidersForm = this._formBuilder.group({
-      idprovider: [this.selectedProviders.idProvider],
-      idStatus: [this.selectedProviders.idStatus],
-      idcategory: [this.selectedProviders.idCategory],
-      idsubcategory: [this.selectedProviders.idSubcategory],
-      identificationCard: [this.selectedProviders.identificationCard],
-      indDelivery: [this.selectedProviders.indDelivery],
-      email: [this.selectedProviders.email],
-      department: [this.selectedProviders.department],
-      country: [this.selectedProviders.country],
-      company: [this.selectedProviders.company],
-      attetionlast: [this.selectedProviders.attentionlast],
-      attetionfirst: [this.selectedProviders.attentionFirst],
-      induCai: [this.selectedProviders.indusCai],
-      keyvalidation: [this.selectedProviders.keyValidation],
-      lastname: [this.selectedProviders.lastName],
-      municipality: [this.selectedProviders.municipality],
-      name: [this.selectedProviders.name],
-      password: [this.selectedProviders.password],
-      phone: [this.selectedProviders.phone],
-      profilePicture: [this.selectedProviders.profilePicture],
-    ProfilePrincipal: [this.selectedProviders.profilePrincipal],
-      qtyWork: [this.selectedProviders.qtyWorks],
-      rtn: [this.selectedProviders.rtn],
-      url: [this.selectedProviders.url],
-      usertype: [this.selectedProviders.userType],
-     
-
+  EditProviderService(content, idProviderService: number){
+    this.selectedProviderService = this.ProviderService.find(s => s.idProviderService == idProviderService);
+    this.editProviderServiceForm = this._formBuilder.group({
+      idproviderservice: [this.selectedProviderService.idProviderService],
+      idproduct: [this.selectedProviderService.idProduct],
+      currency:[this.selectedProviderService.currency],
+      description:[this.selectedProviderService.description],
+      idservicetype:[this.selectedProviderService.idServiceType],
+      price:[this.selectedProviderService.price],
+      productimage:[this.selectedProviderService.productImage],
+      shipping:[this.selectedProviderService.shipping],
+      typeservice:[this.selectedProviderService.typeService],
+      idstatus:[this.selectedProviderService.idStatus],
+      
     });
 
-    let ProvidersToUpdate = {... this.selectedProviders}
+    let ProviderserviceToUpdate = {... this.selectedProviderService}
 
     this.modalService.open(content, 
       { 
@@ -190,34 +144,20 @@ export class ProviderMantainanceComponent implements OnInit {
         centered: true
       }).result.then((result) => {
         if(result){
-          ProvidersToUpdate.idStatus = this.editProvidersForm.value?.IdStatus;
-          ProvidersToUpdate.idProvider = this.editProvidersForm.value?.idProvider;
-          ProvidersToUpdate.idCategory = this.editProvidersForm.value?.idCategory;
-          ProvidersToUpdate.idSubcategory = this.editProvidersForm.value?.idSubcategory;
-          ProvidersToUpdate.email = this.editProvidersForm.value?.email;
-          ProvidersToUpdate.department = this.editProvidersForm.value?.department;
-          ProvidersToUpdate.country = this.editProvidersForm.value?.country;
-          ProvidersToUpdate.company = this.editProvidersForm.value?.company;
-          ProvidersToUpdate.attentionlast = this.editProvidersForm.value?.attentionlast;
-          ProvidersToUpdate.attentionFirst= this.editProvidersForm.value?.attentionFirst;
-          ProvidersToUpdate.identificationCard = this.editProvidersForm.value?.identificationCard;
-          ProvidersToUpdate.indDelivery = this.editProvidersForm.value?.indDelivery;
-          ProvidersToUpdate.indusCai = this.editProvidersForm.value?.indusCai;
-          ProvidersToUpdate.keyValidation = this.editProvidersForm.value?.keyValidation;
-          ProvidersToUpdate.lastName = this.editProvidersForm.value?.lastName;
-          ProvidersToUpdate.municipality = this.editProvidersForm.value?.municipality;
-          ProvidersToUpdate.name = this.editProvidersForm.value?.name;
-          ProvidersToUpdate.password = this.editProvidersForm.value?.password;
-          ProvidersToUpdate.phone = this.editProvidersForm.value?.phone;
-          ProvidersToUpdate.profilePicture = this.editProvidersForm.value?.profilePicture;
-          ProvidersToUpdate.profilePrincipal = this.editProvidersForm.value?.profilePrincipal;
-          ProvidersToUpdate.qtyWorks = this.editProvidersForm.value?.qtyWorks;
-          ProvidersToUpdate.rtn = this.editProvidersForm.value?.rtn;
-          ProvidersToUpdate.url = this.editProvidersForm.value?.url;
-          ProvidersToUpdate.userType = this.editProvidersForm.value?.userType;
-          this.providersService.UpdateProviders(ProvidersToUpdate ).subscribe({next: (resp) => {
+          ProviderserviceToUpdate.shipping = this.editProviderServiceForm.value?.shipping;
+          ProviderserviceToUpdate.currency = this.editProviderServiceForm.value?.currency;
+          ProviderserviceToUpdate.description = this.editProviderServiceForm.value?.description;
+          ProviderserviceToUpdate.idProduct = this.editProviderServiceForm.value?.idProduct;
+          ProviderserviceToUpdate.idProviderService = this.editProviderServiceForm.value?.idProviderService;
+          ProviderserviceToUpdate.price = this.editProviderServiceForm.value?.price;
+          ProviderserviceToUpdate.productImage = this.editProviderServiceForm.value?.productImage;
+          ProviderserviceToUpdate.typeService = this.editProviderServiceForm.value?.typeService;
+          ProviderserviceToUpdate.idServiceType = this.editProviderServiceForm.value?.idServiceType;
+          ProviderserviceToUpdate.idStatus = this.editProviderServiceForm.value?.idStatus;
+         
+          this.providerServiceService.UpdateProviderService(ProviderserviceToUpdate ).subscribe({next: (resp) => {
             if(resp){
-              this.UpdateProviders();
+              this.UpdateProviderService();
             }
           }})
         }
@@ -226,3 +166,4 @@ export class ProviderMantainanceComponent implements OnInit {
 
 
 }
+
