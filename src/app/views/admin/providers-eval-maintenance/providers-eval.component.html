@@ -1,3 +1,4 @@
+
 <div class="">
     <div class="breadcrumb">
         <h1>Admin</h1>
@@ -118,6 +119,64 @@
     </div>
 </ng-template>
 
+<ng-template #CreateModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-title">Create Category</h4>
+      <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="createCategoryForm">
+        <div class="form-group">
+            <label for="email">email</label>
+            <input id="email" class="form-control form-control-rounded" formControlName="email" type="text">
+        </div>
+
+        <div class="form-group">
+            <label for="company">company</label>
+            <input id="company" class="form-control form-control-rounded" formControlName="company" type="text">
+        </div>
+        <div class="form-group">
+            <label for="name">name</label>
+            <input id="name" class="form-control form-control-rounded" formControlName="name" type="text">
+        </div>
+        <div class="form-group">
+            <label for="lastName">lastName</label>
+            <input id="lastName" class="form-control form-control-rounded" formControlName="lastName" type="text">
+        </div>
+        <div class="form-group">
+            <label for="country">country</label>
+            <input id="country" class="form-control form-control-rounded" formControlName="country" type="text">
+        </div>
+        <div class="form-group">
+            <label for="department">department</label>
+            <input id="department" class="form-control form-control-rounded" formControlName="department" type="text">
+        </div>
+        <div class="form-group">
+            <label for="phone">phone</label>
+            <input id="phone" class="form-control form-control-rounded" formControlName="phone" type="text">
+        </div>
+        <div class="form-group">
+            <label for="idCategory">idCategory</label>
+            <input id="idCategory" class="form-control form-control-rounded" formControlName="idCategory" type="text">
+        </div>
+        <div class="form-group">
+            <label for="observations">observations</label>
+            <input id="observations" class="form-control form-control-rounded" formControlName="observations" type="text">
+        </div>
+        <div class="form-group">
+            <label for="idStatus">idStatus</label>
+            <input id="idStatus" class="form-control form-control-rounded" formControlName="idStatus" type="text">
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary btn-rounded" (click)="modal.dismiss(false)">Cancel</button>
+      <button type="button" ngbAutofocus class="btn btn-primary btn-rounded" (click)="modal.close(true)">Save</button>
+    </div>
+</ng-template>
+
 <ng-template #EditModal let-modal>
     <div class="modal-header">
       <h4 class="modal-title" id="modal-title">Update Category</h4>
@@ -128,25 +187,45 @@
     <div class="modal-body">
       <form [formGroup]="editCategoryForm">
         <div class="form-group">
-            <label for="Description">description</label>
-            <input id="Description" class="form-control form-control-rounded" formControlName="Description" type="text">
+            <label for="email">email</label>
+            <input id="email" class="form-control form-control-rounded" formControlName="email" type="text">
         </div>
 
         <div class="form-group">
-            <label for="Creationdate">Creationdate</label>
-            <input id="Creationdate" class="form-control form-control-rounded" formControlName="Creationdate" type="text">
+            <label for="company">company</label>
+            <input id="company" class="form-control form-control-rounded" formControlName="company" type="text">
         </div>
         <div class="form-group">
-            <label for="IdUserCreation">IdUserCreation</label>
-            <input id="IdUserCreation" class="form-control form-control-rounded" formControlName="IdUserCreation" type="text">
+            <label for="name">name</label>
+            <input id="name" class="form-control form-control-rounded" formControlName="name" type="text">
         </div>
         <div class="form-group">
-            <label for="IdStatus">IdStatus</label>
-            <input id="IdStatus" class="form-control form-control-rounded" formControlName="IdStatus" type="text">
+            <label for="lastName">lastName</label>
+            <input id="lastName" class="form-control form-control-rounded" formControlName="lastName" type="text">
         </div>
         <div class="form-group">
-            <label for="Image">Image</label>
-            <input id="Image" class="form-control form-control-rounded" formControlName="Image" type="text">
+            <label for="country">country</label>
+            <input id="country" class="form-control form-control-rounded" formControlName="country" type="text">
+        </div>
+        <div class="form-group">
+            <label for="department">department</label>
+            <input id="department" class="form-control form-control-rounded" formControlName="department" type="text">
+        </div>
+        <div class="form-group">
+            <label for="phone">phone</label>
+            <input id="phone" class="form-control form-control-rounded" formControlName="phone" type="text">
+        </div>
+        <div class="form-group">
+            <label for="idCategory">idCategory</label>
+            <input id="idCategory" class="form-control form-control-rounded" formControlName="idCategory" type="text">
+        </div>
+        <div class="form-group">
+            <label for="observations">observations</label>
+            <input id="observations" class="form-control form-control-rounded" formControlName="observations" type="text">
+        </div>
+        <div class="form-group">
+            <label for="idStatus">idStatus</label>
+            <input id="idStatus" class="form-control form-control-rounded" formControlName="idStatus" type="text">
         </div>
 
       </form>
