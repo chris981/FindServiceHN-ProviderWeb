@@ -13,14 +13,16 @@ export class ProvidersPlanJobsService {
 constructor(private http: HttpClient) { }
 
   GetAllProviderPlanJobs(): Observable<Array<ProviderPlansJobsModel>> {
-    return this.http.get<Array<ProviderPlansJobsModel>>(`${this.baseUrl}/api/DayHour/GetDayHours`);
+    return this.http.get<Array<ProviderPlansJobsModel>>(`${this.baseUrl}/api/ProvidersPlanJobs/GetProvidersPlanJobs`);
   }
-
+  CreateProvidersPlanJobs(providersPlanJobs: ProviderPlansJobsModel): Observable<ProviderPlansJobsModel> {
+    return this.http.post<ProviderPlansJobsModel>(`${this.baseUrl}/api/ProvidersPlabJobs/Create`, providersPlanJobs);
+  }
   DeleteProviderPlanJobs(id: number): Observable<boolean> {
-    return this.http.delete<boolean>(`${this.baseUrl}/api/DayHour/Remove/${id}`);
+    return this.http.delete<boolean>(`${this.baseUrl}/api/ProvidersPlanJobs/Remove/${id}`);
   }
 
-  UpdateProviderPlanJobs(category: ProviderPlansJobsModel): Observable<ProviderPlansJobsModel> {
-    return this.http.put<ProviderPlansJobsModel>(`${this.baseUrl}/api/DayHour/Update`, category);
+  UpdateProviderPlanJobs(providersPlanJobs: ProviderPlansJobsModel): Observable<ProviderPlansJobsModel> {
+    return this.http.put<ProviderPlansJobsModel>(`${this.baseUrl}/api/ProvidersPlanJobs/Update`, providersPlanJobs);
   }
 }
